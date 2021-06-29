@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Operators", "Operators\Oper
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Palindrom", "Palindrom\Palindrom.vcxproj", "{7CE7A6C0-F296-409C-A9DA-1FA83D2A4413}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Arrays", "Arrays\Arrays.vcxproj", "{2ADD5B7E-59DB-453B-9D6E-10EBEAB1D139}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -111,6 +113,14 @@ Global
 		{7CE7A6C0-F296-409C-A9DA-1FA83D2A4413}.Release|x64.Build.0 = Release|x64
 		{7CE7A6C0-F296-409C-A9DA-1FA83D2A4413}.Release|x86.ActiveCfg = Release|Win32
 		{7CE7A6C0-F296-409C-A9DA-1FA83D2A4413}.Release|x86.Build.0 = Release|Win32
+		{2ADD5B7E-59DB-453B-9D6E-10EBEAB1D139}.Debug|x64.ActiveCfg = Debug|x64
+		{2ADD5B7E-59DB-453B-9D6E-10EBEAB1D139}.Debug|x64.Build.0 = Debug|x64
+		{2ADD5B7E-59DB-453B-9D6E-10EBEAB1D139}.Debug|x86.ActiveCfg = Debug|Win32
+		{2ADD5B7E-59DB-453B-9D6E-10EBEAB1D139}.Debug|x86.Build.0 = Debug|Win32
+		{2ADD5B7E-59DB-453B-9D6E-10EBEAB1D139}.Release|x64.ActiveCfg = Release|x64
+		{2ADD5B7E-59DB-453B-9D6E-10EBEAB1D139}.Release|x64.Build.0 = Release|x64
+		{2ADD5B7E-59DB-453B-9D6E-10EBEAB1D139}.Release|x86.ActiveCfg = Release|Win32
+		{2ADD5B7E-59DB-453B-9D6E-10EBEAB1D139}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
