@@ -9,7 +9,7 @@ using std::endl;
 
 //#define FACTORIAL	//Факториал числа (например 5 = 1*2*3*4*5 = 120)
 //#define EXTENT	//Возведение в степень
-//#define ASKIIdefolt	//Вывод таблицы ASKII
+#define ASKIIdefolt	//Вывод таблицы ASKII
 //#define ASKIISTDIO	//Вывод таблицы ASKII через Printf и библиотеку Stdio.h
 
 //#define FACTORIAL2	//Факториал (код урока)
