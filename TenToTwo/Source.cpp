@@ -7,11 +7,12 @@ using std::endl;
 //#define DECIMAL_N_S
 //#define HEXADECIMAL_N_S
 //#define HEXADECIMAL_N_S2
+#define HEXADECIMAL_N_S3
 
 void main()
 {
 	setlocale(LC_ALL, "rus");
-	const int SIZE = 30;
+	const int SIZE = 32;
 	int arr[SIZE]{};
 	int ten,sixteen;
 
@@ -77,7 +78,10 @@ void main()
 				cout << ""; i--;
 			}
 			else sw = false;
-		switch (arr[i])
+		if (arr[i] >= 10)
+			cout << char(55 + i);
+		else cout << arr[i];
+		/*switch (arr[i])
 		{
 		case (10): cout << "A"; break;
 		case (11): cout << "B"; break;
@@ -86,11 +90,21 @@ void main()
 		case (14): cout << "E"; break;
 		case (15): cout << "F"; break;
 		default: cout << arr[i];
-		}
+		}*/
 	}
 #endif // HEXADECIMAL_N_S2
 
+#ifdef HEXADECIMAL_N_S3
 
-
+cout << "Введите десятичное число: "; cin >> sixteen;
+int i = 0;
+for (; sixteen; arr[i] = sixteen % 16, sixteen /= 16, i++) {}
+cout << "Шестнадцетеричное число: 0x";
+for (i--; i >= 0; i--)
+{
+	if (arr[i] >= 10) cout << char(55 + arr[i]);
+	else cout << arr[i];
+} 
+#endif // HEXADECIMAL_N_S3
 
 }

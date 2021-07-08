@@ -1,6 +1,10 @@
 ﻿#include<iostream>
 #include<conio.h>
+#include <ctime>
 using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
 
 //#define KEYBIN
 //#define GAME
@@ -9,13 +13,15 @@ using namespace std;
 //#define MAXANDMIN
 //#define SHIFT
 //#define SHIFTTWO
+#define RANDANDSORT	//Рандомные числа, массив = 20, от 0 до 50, могут повторяться
+//#define RANDANDSORT2	//Рандомные числа без повторений, массив = 20, от 0 до 50
 
 
 void main()
 {
 	setlocale(LC_ALL, "rus");
-	//const int SIZE = 5;	//Разкомментировать для всех, кроме SHIFT
-	//int arr[SIZE];		//Разкомментировать для всех, кроме SHIFT
+	//const int SIZE = 5;	//Разкомментировать для всех, кроме SHIFT,RANDANDSORT,RANDANDSORT2
+	//int arr[SIZE];		//Разкомментировать для всех, кроме SHIFT,RANDANDSORT,RANDANDSORT2
 
 #ifdef KEYBIN
 	for (int i = 0; i < SIZE; i++)
@@ -106,8 +112,8 @@ void main()
 
 	cout << "На сколько сдвинуть? - "; cin >> h;
 	cout << "В какую сторону l / r? - "; cin >> k;
-	
-		for (int i = 0; i < n; i++)cout << arr[i] << " "; cout << endl;
+
+	for (int i = 0; i < n; i++)cout << arr[i] << " "; cout << endl;
 	if (k == l)
 		for (int i = 0; i < h; i++)
 		{
@@ -138,5 +144,66 @@ void main()
 	}
 	for (int i = 0; i < n; i++) cout << arr[i] << " "; cout << endl;
 #endif // SHIFTTWO
+
+#ifdef RANDANDSORT
+	const int S = 20;
+	int arr[S] = {};
+	int buffer = 0;
+	srand(time(0));
+	for (int i = 0; i < S; cout << arr[i] << " ", i++)
+	{
+		arr[i] = rand() % 50;
+	}
+	for (int i = 0; i < S; i++)
+		for (int j = i + 1; j < S; j++)
+		{
+			if (arr[i] >= arr[j])
+			{
+				swap(arr[i], arr[j]);
+			}
+		}
+	cout << endl;
+	for (int i = 0; i < S; i++)
+		cout << arr[i] << " "; cout << endl;
+
+	system("pause");
+	system("cls");
+	main();
+#endif // RANDANDSORT
+
+#ifdef RANDANDSORT2
+	const int S = 20;
+	int arr[S] = {};
+	int buffer = 0;
+	srand(time(0));
+	for (int i = 0; i < S; i++)
+	{
+		arr[i] = rand() % 50;
+		if (i > 0)
+			for (int j = 0; j < i; j++)
+			{
+				if (arr[i] == arr[j])
+				{
+					arr[i] = 0; i--;
+				}
+			}
+	}
+	for (int i = 0; i < S; i++)
+		cout << arr[i] << " ";
+	for (int i = 0; i < S; i++)
+		for (int j = i + 1; j < S; j++)
+		{
+			if (arr[i] >= arr[j])
+			{
+				swap(arr[i], arr[j]);
+			}
+		}
+	cout << endl;
+	for (int i = 0; i < S; i++)
+		cout << arr[i] << " "; cout << endl;
+	system("pause");
+	system("cls");
+	main();
+#endif // RANDANDSORT2
 
 }
