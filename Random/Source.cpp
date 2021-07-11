@@ -2,7 +2,7 @@
 using namespace std;
 
 //#define RANDARRAY	//a two-dimensional array with random values
-//#define ARRAYSHOWMANY	//a one-dimensional array from 0 to 10 with the output of the number of repetitions for repeating numbers
+#define ARRAYSHOWMANY	//a one-dimensional array from 0 to 10 with the output of the number of repetitions for repeating numbers
 
 void main()
 {
@@ -10,8 +10,8 @@ void main()
 
 #ifdef RANDARRAY
 
-	const int n = 5;	//массив
-	const int k = 2;	//номер массива
+	const int n = 5;	//line of arrow
+	const int k = 2;	//number of line
 
 	int arr[k][n];
 	for (int i = 0; i < n; i++)
@@ -44,9 +44,9 @@ void main()
 	{
 		if (arr[i] == arr[i + 1])
 		{
-			cout << "The number: " << arr[i];
+			cout << "The number - " << arr[i];
 			while (arr[i] == arr[i + 1]) n += 1 , i++;
-			cout << " is repeated: " << n << " times" << endl; n = 1;
+			cout << " is repeated " << n << " times" << endl; n = 1;
 		}
 	}
 #endif // ARRAYSHOWMANY
