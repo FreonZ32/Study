@@ -13,15 +13,15 @@ using std::endl;
 //#define MAXANDMIN
 //#define SHIFT
 //#define SHIFTTWO
-#define RANDANDSORT	//Рандомные числа, массив = 20, от 0 до 50, могут повторяться
-//#define RANDANDSORT2	//Рандомные числа без повторений, массив = 20, от 0 до 50
-
+//#define RANDANDSORT	//Рандомные числа, массив = 20, от 0 до 50, могут повторяться (метод выбора)
+//#define RANDANDSORT2	//Рандомные числа без повторений, массив = 20, от 0 до 50 (метод выбора)
+//#define RANDANDSORT3	//Рандомные числа без повторений, двумерный массив = 20, от 0 до 50 (метод выбора)
 
 void main()
 {
 	setlocale(LC_ALL, "rus");
-	//const int SIZE = 5;	//Разкомментировать для всех, кроме SHIFT,RANDANDSORT,RANDANDSORT2
-	//int arr[SIZE];		//Разкомментировать для всех, кроме SHIFT,RANDANDSORT,RANDANDSORT2
+	//const int SIZE = 5;	//Разкомментировать для первых 5ти дефайнов
+	//int arr[SIZE];		//Разкомментировать для первых 5ти дефайнов
 
 #ifdef KEYBIN
 	for (int i = 0; i < SIZE; i++)
@@ -205,5 +205,25 @@ void main()
 	system("cls");
 	main();
 #endif // RANDANDSORT2
+
+#ifdef RANDANDSORT3
+	const int S = 20, r = 2; //r - row - Ряд; S - section - секция
+	int arr[r][S] = { {}, {} };
+	int buffer = 0;
+	srand(time(0));
+	for (int i = 0; i < S; i++)
+	{
+		arr[1][i] = arr[0][i] = rand() % 50;
+		if (i > 0) for (int j = 0; j < i; j++) if (arr[0][i] == arr[0][j]) { arr[0][i] = 0; i--; }
+	}
+	for (int i = 0; i < S; i++)
+		for (int j = i + 1; j < S; j++) if (arr[1][i] > arr[1][j]) swap(arr[1][i], arr[1][j]);
+
+	for (int i = 0; i < S; i++) cout << arr[0][i] << "\t" << arr[1][i] << endl;
+	system("pause");
+	system("cls");
+	main();
+#endif // RANDANDSORT3
+
 
 }

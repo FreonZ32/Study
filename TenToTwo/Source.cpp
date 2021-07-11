@@ -95,7 +95,6 @@ void main()
 #endif // HEXADECIMAL_N_S2
 
 #ifdef HEXADECIMAL_N_S3
-
 cout << "Введите десятичное число: "; cin >> sixteen;
 int i = 0;
 for (; sixteen; arr[i] = sixteen % 16, sixteen /= 16, i++) {}
