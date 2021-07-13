@@ -50,5 +50,8 @@ void main()
 		}
 	}
 #endif // ARRAYSHOWMANY
+	char m;
+	enum Colours{RED,ELLOW,BROUN,};
+	cout << Colours(0);
 
 }

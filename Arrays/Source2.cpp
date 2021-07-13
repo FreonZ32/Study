@@ -224,6 +224,4 @@ void main()
 	system("cls");
 	main();
 #endif // RANDANDSORT3
-
-
 }
