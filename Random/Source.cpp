@@ -9,7 +9,7 @@ using std::srand;
 
 //#define RANDARRAY	//a two-dimensional array with random values
 //#define ARRAYSHOWMANY	//a one-dimensional array from 0 to 10 with the output of the number of repetitions for repeating numbers
-//#define ARRAYSHOWMANY2 
+#define ARRAYSHOWMANY2 
 //#define ARRAYSHOWMANY3	//memset
 
 void main()
@@ -64,7 +64,7 @@ void main()
 	int arr[S] = {};
 	int arr2[r][S] = { {},{} };
 	int n = 0;
-	//srand(time(0));
+	srand(time(0));
 	for (int i = 0; i < S; cout << arr[i++] << " ")
 	{
 		arr[i] = rand() % 10;	// change if you want
@@ -86,28 +86,5 @@ void main()
 	
 #endif // ARRAYSHOWMANY2
 
-#ifdef ARRAYSHOWMANY3
-	const int S = 10;
-	int arr[S] = {};
-	int a[100];
-	for (int i = 0; i < S; cout << arr[i++] << "\t")
-	{
-		arr[i] = rand() % 10;
-	}
-	cout << endl;
-	memset(a, 0, sizeof(a));
-	for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
-	{
-		a[arr[i]]++;
-	}
-	for (int i = 1; i < sizeof(a) / sizeof(a[0]); i++)
-	{
-		if (a[i] > 1)
-		{
-			cout << "Цифра " << i << " встречается " << a[i] << " раз" << "\n";
-		}
-
-	}
-#endif // ARRAYSHOWMANY3
 
 }
