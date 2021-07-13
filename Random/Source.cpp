@@ -9,7 +9,7 @@ using std::srand;
 
 //#define RANDARRAY	//a two-dimensional array with random values
 //#define ARRAYSHOWMANY	//a one-dimensional array from 0 to 10 with the output of the number of repetitions for repeating numbers
-#define ARRAYSHOWMANY2 
+//#define ARRAYSHOWMANY2 
 //#define ARRAYSHOWMANY3	//memset
 
 void main()
@@ -60,14 +60,14 @@ void main()
 #endif // ARRAYSHOWMANY
 
 #ifdef ARRAYSHOWMANY2
-	const int S = 20,r = 2;
+	const int S = 10,r = 2;	//change S if you want
 	int arr[S] = {};
 	int arr2[r][S] = { {},{} };
 	int n = 0;
-	srand(time(0));
+	//srand(time(0));
 	for (int i = 0; i < S; cout << arr[i++] << " ")
 	{
-		arr[i] = rand() % 20;
+		arr[i] = rand() % 10;	// change if you want
 		for (int j = 0; j < i; j++)
 		{
 			if (arr[i] == arr[j] && i > arr2[1][arr[i]])
@@ -79,8 +79,10 @@ void main()
 	}
 	cout << endl;
 	for (int i = 0; i < S; i++)
-		if(arr2[0][i]>0)
-			cout << "Число " << i << " повторяется " << arr2[0][i]+1 << " раз" << endl;
+		if(arr2[0][i]>1)
+			cout << "Number " << i << " was appeared " << arr2[0][i]+1 << " times" << endl;
+		else if (arr2[0][i] > 0)
+			cout << "Number " << i << " was repeated " << arr2[0][i] + 1 << " times" << endl;
 	
 #endif // ARRAYSHOWMANY2
 
