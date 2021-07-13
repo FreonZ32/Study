@@ -74,31 +74,6 @@ void main()
 			if (arr[i] == arr[j])n++;
 			if (j == S - 1 && n > 1)cout << arr[i] << " out " << n << endl;
 		}*/
-		
-	int const sz = 10;
-	int arr[sz] = { };
-	short stat = 0;
-
-	for (int i = 0; i < sz; cout << arr[i++] << "\t")
-	{
-		arr[i] = rand() % 10;
-	}
-
-	for (int i = 0; i < sz; i++) {
-		for (int j = i + 1; j < sz; j++) {
-			if (arr[i] == arr[j]) {
-				for (int n = j - 1; n >= 0; n--) {
-					if (arr[j] == arr[n])
-						stat++;
-				}
-				if (stat == 1) {
-					cout << arr[i] << " " << stat;
-				}
-				stat = 0;
-			}
-		}
-	}
-
 
 #endif // ARRAYSHOWMANY2
 
