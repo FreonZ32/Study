@@ -4,6 +4,7 @@ using namespace std;
 using std::cout;
 using std::cin;
 using std::endl;
+using std::srand;
 
 
 //#define RANDARRAY	//a two-dimensional array with random values
@@ -59,23 +60,28 @@ void main()
 #endif // ARRAYSHOWMANY
 
 #ifdef ARRAYSHOWMANY2
-
-
-	/*const int S = 10;
+	const int S = 20,r = 2;
 	int arr[S] = {};
+	int arr2[r][S] = { {},{} };
 	int n = 0;
-	for (int i = 0; i < S; cout << arr[i++] << "\t")
+	srand(time(0));
+	for (int i = 0; i < S; cout << arr[i++] << " ")
 	{
-		arr[i] = rand() % 10;
+		arr[i] = rand() % 20;
+		for (int j = 0; j < i; j++)
+		{
+			if (arr[i] == arr[j] && i > arr2[1][arr[i]])
+			{
+				arr2[0][arr[i]]++;
+				arr2[1][arr[i]] = i;
+			}
+		}
 	}
 	cout << endl;
-	for (int i = 0; i < S;n=0, i++)
-		for (int j = 0; j < S; j++)
-		{
-			if (arr[i] == arr[j])n++;
-			if (j == S - 1 && n > 1)cout << arr[i] << " out " << n << endl;
-		}*/
-
+	for (int i = 0; i < S; i++)
+		if(arr2[0][i]>0)
+			cout << "Число " << i << " повторяется " << arr2[0][i]+1 << " раз" << endl;
+	
 #endif // ARRAYSHOWMANY2
 
 #ifdef ARRAYSHOWMANY3
