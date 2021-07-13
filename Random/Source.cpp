@@ -60,6 +60,7 @@ void main()
 
 #ifdef ARRAYSHOWMANY2
 
+
 	/*const int S = 10;
 	int arr[S] = {};
 	int n = 0;
