@@ -10,8 +10,8 @@ using std::srand;
 
 //#define RANDARRAY	//a two-dimensional array with random values
 //#define ARRAYSHOWMANY	//a one-dimensional array from 0 to 10 with the output of the number of repetitions for repeating numbers
-#define ARRAYSHOWMANY2	//a lot of mistakes, but work (rand%10+100 & (char)arr will broke prg)
-//#define ARRAYSHOWMANY3	//best way
+//#define ARRAYSHOWMANY2	//a lot of mistakes, but work (rand%10+100 & (char)arr will broke prg)
+#define ARRAYSHOWMANY3	//best way
 
 void main()
 {
@@ -102,18 +102,16 @@ void main()
 	for (int i = 0; i < S; n = 0,sch = 0, i++)
 	{
 			for (int j = 0; j < S; j++)
-			{
-				if (arr[i] == arr[j])
-					n++;
-			}
+				if (arr[i] == arr[j]) n++;
 			if(i>0)
-			for (int j = 0; j < i; j++) if (arr[i] == arr[j])sch++;
+				for (int j = 0; j < i; j++)
+					if (arr[i] == arr[j])sch++;
 			if (n > 1 && sch == 0)cout << "Число " << arr[i] << " повторяется " << n << " раз." << endl;
 	}
 	system("pause");
 	system("cls");
 	main();
 
-#endif // DEBUG
+#endif // ARRAYSHOWMANY3
 
 }
