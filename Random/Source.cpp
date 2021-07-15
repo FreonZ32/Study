@@ -1,4 +1,5 @@
 #include<iostream>
+#include<ctime>
 using namespace std;
 
 using std::cout;
@@ -9,8 +10,8 @@ using std::srand;
 
 //#define RANDARRAY	//a two-dimensional array with random values
 //#define ARRAYSHOWMANY	//a one-dimensional array from 0 to 10 with the output of the number of repetitions for repeating numbers
-#define ARRAYSHOWMANY2 
-//#define ARRAYSHOWMANY3	//memset
+//#define ARRAYSHOWMANY2	//a lot of mistakes, but work
+#define ARRAYSHOWMANY3	//best way
 
 void main()
 {
@@ -60,7 +61,7 @@ void main()
 #endif // ARRAYSHOWMANY
 
 #ifdef ARRAYSHOWMANY2
-	const int S = 10,r = 2;	//change S if you want
+	const int S = 10, r = 2;	//change S if you want
 	int arr[S] = {};
 	int arr2[r][S] = { {},{} };
 	int n = 0;
@@ -79,12 +80,40 @@ void main()
 	}
 	cout << endl;
 	for (int i = 0; i < S; i++)
-		if(arr2[0][i]>1)
-			cout << "Number " << i << " was appeared " << arr2[0][i]+1 << " times" << endl;
+		if (arr2[0][i] > 1)
+			cout << "Number " << i << " was appeared " << arr2[0][i] + 1 << " times" << endl;
 		else if (arr2[0][i] > 0)
 			cout << "Number " << i << " was repeated " << arr2[0][i] + 1 << " times" << endl;
-	
+
 #endif // ARRAYSHOWMANY2
 
+#ifdef ARRAYSHOWMANY3
+	const unsigned int S = 10;
+
+	int arr[S] = {};
+	int sch = 0;	//switch
+	int n=0;	//Number of appear
+	//srand(time(0));
+	for (int i = 0; i < S; cout << arr[i++] << " ")
+	{
+		arr[i] = rand() % 10+100;
+	}
+	cout << endl;
+	for (int i = 0; i < S; n = 0,sch = 0, i++)
+	{
+			for (int j = 0; j < S; j++)
+			{
+				if (arr[i] == arr[j])
+					n++;
+			}
+			if(i>0)
+			for (int j = 0; j < i; j++) if (arr[i] == arr[j])sch++;
+			if (n > 1 && sch == 0)cout << "Число " << arr[i] << " повторяется " << n << " раз." << endl;
+	}
+	system("pause");
+	system("cls");
+	main();
+
+#endif // DEBUG
 
 }
