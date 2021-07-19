@@ -7,7 +7,7 @@ using std::cin;
 using std::endl;
 
 //#define KEYBIN	//Ввод и вывод массива / Array input and output
-// GAME	//Игра, введи от 0 до 20 числа, если одно твое число сойдется с рандомным числом машины, то ты выиграл / Game, enter from 0 to 20 numbers, if one of your numbers matches the random number of the car, then you have won. 
+//#define GAME	//Игра, введи от 0 до 20 числа, если одно твое число сойдется с рандомным числом машины, то ты выиграл / Game, enter from 0 to 20 numbers, if one of your numbers matches the random number of the car, then you have won. 
 //#define MAXANDMIN	//Вывод максимума и минимума, не меняя массив. Могут быть недочеты / Output of the maximum and minimum without changing the array. There may be shortcomings.
 //#define SHIFT	//Сдвиг массива только направо / Shifting the array to the right only
 //#define SHIFTTWO	//Сдвиг массива с выбором направления / Shifting an array with a choice of direction
