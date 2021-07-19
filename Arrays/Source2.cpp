@@ -40,13 +40,13 @@ void main()
 		cout << "[" << i + 1 << "]" << ": ";
 		cin >> arr[i];
 	}
-	cout << "Цель: " << n << endl;
+	cout << "Цель: " << n << endl;	//"target: "
 	for (int i = 0; i < SIZE; i++)
 	{
 		if (arr[i] == n)
-			cout << "Ты попал!" << endl;
+			cout << "Ты попал!" << endl;	//"You got it!"
 		else if (arr[i] != n && i == SIZE - 1)
-			cout << "Ты не попал! " << endl;
+			cout << "Ты не попал! " << endl;	//"You didn't hit it!"
 	}
 #endif // GAME
 
@@ -60,8 +60,8 @@ void main()
 		if (min >= arr[i]) min = arr[i];
 		if (max <= arr[i]) max = arr[i];
 	}
-	cout << "Минимальное: " << min << endl;
-	cout << "Максимальное: " << max;
+	cout << "Min: " << min << endl;
+	cout << "Max: " << max;
 
 	/*int sum = 0;
 	for (int i = 0; i < SIZE; i++)
