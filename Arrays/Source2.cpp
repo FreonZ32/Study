@@ -6,22 +6,21 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-//#define KEYBIN
-//#define GAME
-//#define WHAT
-//#define KEYBINANDBACK
-//#define MAXANDMIN
-//#define SHIFT
-//#define SHIFTTWO
-//#define RANDANDSORT	//Рандомные числа, массив = 20, от 0 до 50, могут повторяться (метод выбора)
-//#define RANDANDSORT2	//Рандомные числа без повторений, массив = 20, от 0 до 50 (метод выбора)
+//#define KEYBIN	//Ввод и вывод массива / Array input and output
+// GAME	//Игра, введи от 0 до 20 числа, если одно твое число сойдется с рандомным числом машины, то ты выиграл / Game, enter from 0 to 20 numbers, if one of your numbers matches the random number of the car, then you have won. 
+//#define MAXANDMIN	//Вывод максимума и минимума, не меняя массив. Могут быть недочеты / Output of the maximum and minimum without changing the array. There may be shortcomings.
+//#define SHIFT	//Сдвиг массива только направо / Shifting the array to the right only
+//#define SHIFTTWO	//Сдвиг массива с выбором направления / Shifting an array with a choice of direction
+//#define RANDANDSORT	//Рандомные числа, массив = 20, от 0 до 50, могут повторяться (метод выбора) / Random numbers, array = 20, from 0 to 50, can be repeated (selection method)
+//#define RANDANDSORT2	//Рандомные числа без повторений, массив = 20, от 0 до 50 (метод выбора) / Random numbers without repetitions, array = 20, from 0 to 50 (selection method)
 //#define RANDANDSORT3	//Рандомные числа без повторений, двумерный массив = 20, от 0 до 50 (метод выбора) ПЕРЕПИСАТЬ !!!
 
 void main()
 {
 	setlocale(LC_ALL, "rus");
-	//const int SIZE = 5;	//Разкомментировать для первых 5ти дефайнов
-	//int arr[SIZE];		//Разкомментировать для первых 5ти дефайнов
+
+	//const int SIZE = 5;	//Разкомментировать для первых 3х дефайнов / Un-comment for the first 3 defines
+	//int arr[SIZE];		//Разкомментировать для первых 3x дефайнов / Un-comment for the first 3 defines
 
 #ifdef KEYBIN
 	for (int i = 0; i < SIZE; i++)
@@ -29,11 +28,12 @@ void main()
 		cout << "[" << i + 1 << "]" << ": ";
 		cin >> arr[i];
 	}
-	/*for (int i = 0; i < SIZE; i++)
-		cout << arr[i] << " " << endl;*/
+	for (int i = 0; i < SIZE; i++)
+		cout << arr[i] << " " << endl;
 #endif // KEYBIN
 
 #ifdef GAME
+	srand(time(NULL));
 	int n = rand() % 20;
 	for (int i = 0; i < SIZE; i++)
 	{
@@ -44,40 +44,32 @@ void main()
 	for (int i = 0; i < SIZE; i++)
 	{
 		if (arr[i] == n)
-			cout << "попал" << endl;
+			cout << "Ты попал!" << endl;
+		else if (arr[i] != n && i == SIZE - 1)
+			cout << "Ты не попал! " << endl;
 	}
-	system("pause");
-	system("cls");
-	main();
 #endif // GAME
 
-#ifdef WHAT
+#ifdef MAXANDMIN
+	srand(time(0));
+	for (int i = 0; i < SIZE;cout << arr[i] << " ", i++)
+		arr[i] = rand() % 20; cout << endl;
+	int max = arr[0], min = arr[0];
 	for (int i = 0; i < SIZE; i++)
 	{
-		cout << arr[i] << "\t";
-	}
-	cout << endl;
-#endif // WHAT
-
-#ifdef KEYBINANDBACKint 
-	max = arr[0], min = arr[0];
-	for (int i = 0; i < SIZE; i++)
-	{
-		if (min > arr[i]) min = arr[i];
-		if (max < arr[i]) max = arr[i];
+		if (min >= arr[i]) min = arr[i];
+		if (max <= arr[i]) max = arr[i];
 	}
 	cout << "Минимальное: " << min << endl;
 	cout << "Максимальное: " << max;
-	int sum = 0;
+
+	/*int sum = 0;
 	for (int i = 0; i < SIZE; i++)
 	{
 		sum += arr[i];
 	}
 	cout << sum << endl;;
-	cout << (double)sum / SIZE << endl;;
-#endif // KEYBINANDBACK
-
-#ifdef MAXANDMIN
+	cout << (double)sum / SIZE << endl;*/
 
 #endif // MAXANDMIN
 
@@ -91,7 +83,7 @@ void main()
 		cout << arr[i] << " ";
 	} cout << endl;
 	for (int i = 0; i < h; i++)
-		for (int i = 0; i < h; i++)
+		for (int i = 0; i < n; i++)
 		{
 			swap(arr[i], arr[n - 1]);
 		}
