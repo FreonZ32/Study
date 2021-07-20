@@ -11,7 +11,9 @@ using std::srand;
 //#define RANDARRAY	//a two-dimensional array with random values
 //#define ARRAYSHOWMANY	//a one-dimensional array from 0 to 10 with the output of the number of repetitions for repeating numbers
 //#define ARRAYSHOWMANY2	//a lot of mistakes, but work (rand%10+100 & (char)arr will broke prg)
-#define ARRAYSHOWMANY3	//best way
+//#define ARRAYSHOWMANY3	//best way
+//#define UNIQUERANDOM	//the solution on the lesson
+//#define SEARCH
 
 void main()
 {
@@ -92,21 +94,21 @@ void main()
 
 	int arr[S] = {};
 	int sch = 0;	//switch
-	int n=0;	//Number of appear
+	int n = 0;	//Number of appear
 	//srand(time(0));
 	for (int i = 0; i < S; cout << arr[i++] << " ")
 	{
-		arr[i] = rand() % 10+100;
+		arr[i] = rand() % 10 + 100;
 	}
 	cout << endl;
-	for (int i = 0; i < S; n = 0,sch = 0, i++)
+	for (int i = 0; i < S; n = 0, sch = 0, i++)
 	{
-			for (int j = 0; j < S; j++)
-				if (arr[i] == arr[j]) n++;
-			if(i>0)
-				for (int j = 0; j < i; j++)
-					if (arr[i] == arr[j])sch++;
-			if (n > 1 && sch == 0)cout << "Число " << arr[i] << " повторяется " << n << " раз." << endl;
+		for (int j = 0; j < S; j++)
+			if (arr[i] == arr[j]) n++;
+		if (i > 0)
+			for (int j = 0; j < i; j++)
+				if (arr[i] == arr[j])sch++;
+		if (n > 1 && sch == 0)cout << "Число " << arr[i] << " повторяется " << n << " раз." << endl;
 	}
 	system("pause");
 	system("cls");
@@ -114,5 +116,67 @@ void main()
 
 #endif // ARRAYSHOWMANY3
 
-	
+#ifdef UNIQUERANDOM
+	const int n = 10;
+	int arr[n];
+	//генерацияы уникальных случайных чисел
+	for (int i = 0; i < n; i++)
+	{
+		bool unique;
+		do
+		{
+			arr[i] = rand() % n;
+			unique = true; //надеемся на то что число уникально
+			for (int j = 0; j < i; j++)
+			{
+				if (arr[i] == arr[j])	//если произошло совпадение, то
+				{
+					unique = false;	//сгенерированное случ. число не является уникальным
+					break;	//Прерывает текущий for
+				}
+			}
+		} while (!unique);
+	}
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << "\t";
+	}
+	cout << endl;
+#endif // UNIQUERANDOM
+
+#ifdef SEARCH
+
+	const int n = 10;
+	int arr[n];
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = rand() % 10;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << "\t";
+	}
+	cout << endl;
+	for (int i = 0; i < n; i++)
+	{
+		bool already = false;
+		for (int j = 0; j < i; j++)
+		{
+			if (arr[i] == arr[j])
+			{
+				already = true;
+				break;
+			}
+		}
+		if (already)continue;	//Ключевое слово прерывает текущую итерацию и переходит к следующей.
+		int count = 1;
+		for (int j = i + 1; j < n; j++)
+		{
+			if (arr[i] == arr[j])count++;
+		}
+		//if (count > 1)cout << "Значение " << arr[i] << " повторяется " << count << " раз\n";
+		if (count > 1) printf("Значение %d встречается %d раз\n", arr[i], count);
+	}
+#endif // SEARCH
+
 }
