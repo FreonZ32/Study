@@ -7,7 +7,7 @@ using std::endl;
 //#define EXAMPLE
 //#define ARITH_MAX_MIX_SORT
 //#define UNIQUENUMBERS
-//#define SEARCH
+#define SEARCH
 
 
 void main()
@@ -60,9 +60,9 @@ void main()
 			if (max < arr[i][j])max = arr[i][j];
 		}
 	}
-	cout << "Среднее арифметическое: " << (double)sum / totalyn << endl;
-	printf("Среднее арифметическое: %d\n", sum / totalyn); cout << endl;
-	printf("Максимальное значение: %d\nМинимальное значение: %d\n", max, min);
+	cout << "Arithmetic mean: " << (double)sum / totalyn << endl;
+	printf("Arithmetic mean: %d\n", sum / totalyn); cout << endl;
+	printf("Maximum value: %d\nMinimum value: %d\n", max, min);
 	cout << endl;
 	//Сортировочка / Sortirovochka / Sort 
 	for (int k = 0; k < R * C; k++)
@@ -140,10 +140,11 @@ void main()
 		{
 			if (arr[i/C][i%C] == arr[j/C][j%C])count++;
 		}
-		if (count > 1)cout << "Значение " << arr[i/C][i%C] << " повторяется " << count << " раз\n";
+		if (count > 2)
+			cout << "Number " << arr[i/C][i%C] << " was appeared " << count << " times" << endl;
+		else if (count > 1)
+			cout << "Number " << arr[i / C][i % C] << " was repeated " << count << " times" << endl;
 	}
 #endif // SEARCH
-
-
 
 }
