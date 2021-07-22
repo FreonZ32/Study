@@ -7,7 +7,7 @@ using std::endl;
 //#define EXAMPLE
 //#define ARITH_MAX_MIX_SORT
 //#define UNIQUENUMBERS
-#define SEARCH
+//#define SEARCH
 
 
 void main()

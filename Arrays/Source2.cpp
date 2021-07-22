@@ -14,6 +14,7 @@ using std::endl;
 //#define RANDANDSORT	//Рандомные числа, массив = 20, от 0 до 50, могут повторяться (метод выбора) / Random numbers, array = 20, from 0 to 50, can be repeated (selection method)
 //#define RANDANDSORT2	//Рандомные числа без повторений, массив = 20, от 0 до 50 (метод выбора) / Random numbers without repetitions, array = 20, from 0 to 50 (selection method)
 //#define RANDANDSORT3	//Рандомные числа без повторений, двумерный массив = 20, от 0 до 50 (метод выбора) ПЕРЕПИСАТЬ !!!
+//#define SORTSHELL	//Сортировка Шелла /	Sorting the Shell
 
 void main()
 {
@@ -215,4 +216,29 @@ void main()
 	system("cls");
 	main();
 #endif // RANDANDSORT3
+
+#ifdef SORTSHELL
+	const int N = 10;
+	int arr[N] = {};
+	int i, j, step;
+	int tmp;
+	for (int i = 0; i < N; cout << arr[i] << " ", i++)
+		arr[i] = rand() % 10; cout << endl;
+	for (step = N / 2; step > 0; step /= 2)
+		for (i = step; i < N; i++)
+		{
+			tmp = arr[i];
+			for (j = i; j >= step; j -= step)
+			{
+				if (tmp < arr[j - step])
+					arr[j] = arr[j - step];
+				else
+					break;
+			}
+			arr[j] = tmp;
+		}
+	for (int i = 0; i < N; cout << arr[i] << " ", i++);
+#endif // SORTSHELL
+
+
 }
