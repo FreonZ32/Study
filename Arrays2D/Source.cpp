@@ -141,7 +141,7 @@ void main()
 			if (arr[i/C][i%C] == arr[j/C][j%C])count++;
 		}
 		if (count > 2)
-			cout << "Number " << arr[i/C][i%C] << " was appeared " << count << " times" << endl;
+			cout << "Number " << arr[i / C][i % C] << " was appeared " << count << " times" << endl;
 		else if (count > 1)
 			cout << "Number " << arr[i / C][i % C] << " was repeated " << count << " times" << endl;
 	}
