@@ -231,7 +231,7 @@ void main()
 	for (int i = 0; i < R; i++)
 	{
 		for (int j = 0; j < C; cout << arr1[i][j++] << " ") arr1[i][j] = rand() % 10; cout << endl;
-	}cout << endl;
+	} cout << endl;
 	//Массив для решения методом Саррюса / Array for solving by the Sarrus method
 	int arr2[R][CC] = { {}, {}, {} };
 	for (int i = 0; i < R; i++)
@@ -241,7 +241,7 @@ void main()
 			if (j < C)arr2[i][j] = arr1[i][j];
 			else arr2[i][j] = arr1[i][j - 3];
 		}cout << endl;
-	}
+	} cout << endl;
 	//Решение и вывод / Solution and conclusion
 	int sum = 0, blocks = 0;
 	for (int i = 0; i < R; i++)
