@@ -270,8 +270,8 @@ void main()
 			else { cout << " - ";  break; }
 		}
 		sum -= blocks;
-	}
-	cout << sum;
+	}cout << sum << endl;
+	printf("A third-order determinant for a given array using the Sarrus method: %d\n ", sum);
 #endif // THE_MATRIC_SARRUS
 
 		
