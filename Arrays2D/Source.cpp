@@ -225,7 +225,6 @@ void main()
 #ifdef THE_MATRIC_SARRUS
 	const int R = 3;
 	const int C = 3, CC = 5;
-	srand(time(0));
 	//Основной массив 3 x 3 / The main array is 3 x 3
 	int arr1[R][C] = { {}, {}, {} };
 	for (int i = 0; i < R; i++)
@@ -272,6 +271,9 @@ void main()
 		sum -= blocks;
 	}cout << sum << endl;
 	printf("A third-order determinant for a given array using the Sarrus method: %d\n ", sum);
+	system("pause");
+	system("cls");
+	main();
 #endif // THE_MATRIC_SARRUS
 
 		
