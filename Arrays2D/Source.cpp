@@ -242,7 +242,7 @@ void main()
 			else arr2[i][j] = arr1[i][j - 3];
 		}cout << endl;
 	}
-	//Решение и вывод
+	//Решение и вывод / Solution and conclusion
 	int sum = 0, blocks = 0;
 	for (int i = 0; i < R; i++)
 	{
