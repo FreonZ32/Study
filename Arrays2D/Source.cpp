@@ -10,6 +10,7 @@ using std::endl;
 //#define SEARCH
 //#define THE_MATRIX_ADD
 //#define THE_MATRIX_MULT
+#define THE_MATRIC_SARRUS
 
 void main()
 {
@@ -220,4 +221,59 @@ void main()
 		cout << endl;
 	}
 #endif // THE_MATRIX_MULT
+
+#ifdef THE_MATRIC_SARRUS
+	const int R = 3;
+	const int C = 3, CC = 5;
+	srand(time(0));
+	//Основной массив 3 x 3 / The main array is 3 x 3
+	int arr1[R][C] = { {}, {}, {} };
+	for (int i = 0; i < R; i++)
+	{
+		for (int j = 0; j < C; cout << arr1[i][j++] << " ") arr1[i][j] = rand() % 10; cout << endl;
+	}cout << endl;
+	//Массив для решения методом Саррюса / Array for solving by the Sarrus method
+	int arr2[R][CC] = { {}, {}, {} };
+	for (int i = 0; i < R; i++)
+	{
+		for (int j = 0; j < CC; cout << arr2[i][j++] << " ")
+		{
+			if (j < C)arr2[i][j] = arr1[i][j];
+			else arr2[i][j] = arr1[i][j - 3];
+		}cout << endl;
+	}
+	//Решение и вывод
+	int sum = 0, blocks = 0;
+	for (int i = 0; i < R; i++)
+	{
+		blocks = arr2[0][i];
+		for (int j = i, s = 0; j < CC; j++)
+		{
+			cout << arr2[s][j];
+			if (s > 0) blocks *= arr2[s][j];
+			s++;
+			if (s < 3)cout << " * ";
+			else if (i == R - 1) { cout << " - ";  break; }
+			else { cout << " + ";  break; }
+		} sum += blocks;
+	}
+	for (int i = R - 1; i < CC; i++)
+	{
+		blocks = arr2[0][i];
+		for (int j = i, s = 0; s < R; j--)
+		{
+			cout << arr2[s][j];
+			if (s > 0) blocks *= arr2[s][j];
+			s++;
+			if (s < 3)cout << " * ";
+			else if (i == CC - 1) { cout << " = ";  break; }
+			else { cout << " - ";  break; }
+		}
+		sum -= blocks;
+	}
+	cout << sum;
+#endif // THE_MATRIC_SARRUS
+
+		
+		
 }
