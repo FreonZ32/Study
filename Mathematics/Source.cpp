@@ -18,7 +18,7 @@ using std::endl;
 
 void main()
 {
-	setlocale(LC_ALL, "rus");
+	//setlocale(LC_ALL, "rus");
 
 #ifdef FACTORIAL
 	double k; //вводимое число
