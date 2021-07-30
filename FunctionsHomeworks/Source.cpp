@@ -1,5 +1,6 @@
 #pragma warning(disable:4326)
 #include<iostream>
+#include <typeinfo>
 using namespace std;
 using std::cout;
 using std::cin;
@@ -77,14 +78,14 @@ void main()
 	setlocale(LC_ALL, "rus");
 	int rangeRand;
 	char Unique = 'n';
-	char typeArr;
+
 	//int arr[R][C];
 	//double arr[R][C];
 	//float arr[R][C];
 	//short arr[R][C];
-	char arr[R][C];
+	char arr[R][C];	
 	
-	cout << "What range of values do you want? >| "; cin >> rangeRand;
+	cout <<" What range of values do you want? >| "; cin >> rangeRand;	//!!! The value of variations should not be more than 25 with the type of char array  !!!!!
 	if (rangeRand >= 20)
 	{
 		cout << "Create a unique array? y/n "; cin >> Unique;
@@ -176,7 +177,7 @@ float Array(float arr[][C], int rangeRand, char Unique, bool uniq, int R, int C)
 
 		do
 		{
-			arr[i / C][i % C] = (float(rand() % rangeRand) / 1.1);
+			arr[i / C][i % C] = (float(rand() % rangeRand) / 0.1);
 			if (Unique == 'n')break;
 			else if (Unique == 'y')
 			{
