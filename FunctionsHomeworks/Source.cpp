@@ -6,6 +6,8 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+//Переписать, разобрать!!!!!!!
+
 #define RETURN cout << "What did you inject me with ? You're rubbing some kind of game into me, let's do it again!\n";system("pause");system("cls");main();
 #define CLEARANDBACK system("pause");system("cls");main();
 const int R = 2;
@@ -62,16 +64,16 @@ short ShiftRight(short arr[][C], int m, int R, int C);
 char ShiftRight(char arr[][C], int m, int R, int C);
 
 int Sort(int arr[][C], int R, int C);
-double Sort(double arr[][C], int R, int C);
-float Sort(float arr[][C], int R, int C);
-short Sort(short arr[][C], int R, int C);
-char Sort(char arr[][C], int R, int C);
+int Sort(double arr[][C], int R, int C);
+int Sort(float arr[][C], int R, int C);
+int Sort(short arr[][C], int R, int C);
+int Sort(char arr[][C], int R, int C);
 
 int SortByShell(int arr[][C], int R, int C);
-double SortByShell(double arr[][C], int R, int C);
-float SortByShell(float arr[][C], int R, int C);
-short SortByShell(short arr[][C], int R, int C);
-char SortByShell(char arr[][C], int R, int C);
+int SortByShell(double arr[][C], int R, int C);
+int SortByShell(float arr[][C], int R, int C);
+int SortByShell(short arr[][C], int R, int C);
+int SortByShell(char arr[][C], int R, int C);
 
 void main()
 {
@@ -80,10 +82,10 @@ void main()
 	char Unique = 'n';
 
 	//int arr[R][C];
-	//double arr[R][C];
+	double arr[R][C];
 	//float arr[R][C];
 	//short arr[R][C];
-	char arr[R][C];	
+	//char arr[R][C];	
 	
 	cout <<" What range of values do you want? >| "; cin >> rangeRand;	//!!! The value of variations should not be more than 25 with the type of char array  !!!!!
 	if (rangeRand >= 20)
@@ -115,8 +117,8 @@ void main()
 	case 4: cout << "The minimum value in the array = " << minValueIn(arr, R, C) << endl; break;
 	case 5: cout << "Shift the array to the right by " << move << " values:\n", ShiftRight(arr, move, R, C); break;
 	case 6: cout << "Shifting the array to the left by " << move << " values:\n", ShiftLeft(arr, move, R, C); break;
-	case 7: cout << "Sorted array:\n", Sort(arr, R, C); break;
-	case 8: cout << "Sorted array using the Shell method:\n", SortByShell(arr, R, C); break;
+	case 7: cout << "Array sorted by:" << Sort(arr, R, C) << " Iterations\n" << Aout(arr, R, C); break;
+	case 8: cout << "Sorted array using the Shell method by: " << SortByShell(arr, R, C) << " Iterations\n" << Aout(arr, R, C); break;
 	default: cout << "Something went wrong\n"; break;
 	}
 	CLEARANDBACK;
@@ -526,7 +528,6 @@ char ShiftLeft(char arr[][C], int m, int R, int C)
 	} Aout(arr, R, C); return 0;
 }
 
-
 int ShiftRight(int arr[][C], int m, int R, int C)
 {
 	int buf = 0;
@@ -627,11 +628,9 @@ int Sort(int arr[][C], int R, int C)
 			if (arr[k / C][k % C] < arr[i / C][i % C]) swap(arr[k / C][k % C], arr[i / C][i % C]);
 			iter++;
 		}
-	cout << "Iterations completed: " << iter << endl;
-	Aout(arr, R, C);
-	return 0;
+	return iter;
 }
-double Sort(double arr[][C], int R, int C)
+int Sort(double arr[][C], int R, int C)
 {
 	int iter = 0;
 	for (int k = 0; k < R * C; k++)
@@ -640,11 +639,9 @@ double Sort(double arr[][C], int R, int C)
 			if (arr[k / C][k % C] < arr[i / C][i % C]) swap(arr[k / C][k % C], arr[i / C][i % C]);
 			iter++;
 		}
-	cout << "Iterations completed: " << iter << endl;
-	Aout(arr, R, C);
-	return 0;
+	return iter;
 }
-float Sort(float arr[][C], int R, int C)
+int Sort(float arr[][C], int R, int C)
 {
 	int iter = 0;
 	for (int k = 0; k < R * C; k++)
@@ -653,11 +650,9 @@ float Sort(float arr[][C], int R, int C)
 			if (arr[k / C][k % C] < arr[i / C][i % C]) swap(arr[k / C][k % C], arr[i / C][i % C]);
 			iter++;
 		}
-	cout << "Iterations completed: " << iter << endl;
-	Aout(arr, R, C);
-	return 0;
+	return iter;
 }
-short Sort(short arr[][C], int R, int C)
+int Sort(short arr[][C], int R, int C)
 {
 	int iter = 0;
 	for (int k = 0; k < R * C; k++)
@@ -666,11 +661,9 @@ short Sort(short arr[][C], int R, int C)
 			if (arr[k / C][k % C] < arr[i / C][i % C]) swap(arr[k / C][k % C], arr[i / C][i % C]);
 			iter++;
 		}
-	cout << "Iterations completed: " << iter << endl;
-	Aout(arr, R, C);
-	return 0;
+	return iter;
 }
-char Sort(char arr[][C], int R, int C)
+int Sort(char arr[][C], int R, int C)
 {
 	int iter = 0;
 	for (int k = 0; k < R * C; k++)
@@ -679,9 +672,7 @@ char Sort(char arr[][C], int R, int C)
 			if ((int)arr[k / C][k % C] < (int)arr[i / C][i % C]) swap(arr[k / C][k % C], arr[i / C][i % C]);
 			iter++;
 		}
-	cout << "Iterations completed: " << iter << endl;
-	Aout(arr, R, C);
-	return 0;
+	return iter;
 }
 
 int SortByShell(int arr[][C], int R, int C)
@@ -705,11 +696,9 @@ int SortByShell(int arr[][C], int R, int C)
 			}
 			arr[j / C][j % C] = tmp;
 		}
-	cout << "Iterations completed: " << iter << endl;
-	Aout(arr, R, C);
-	return 0;
+	return iter;
 }
-double SortByShell(double arr[][C], int R, int C)
+int SortByShell(double arr[][C], int R, int C)
 {
 	int iter = 0;
 	int j, step;
@@ -730,11 +719,10 @@ double SortByShell(double arr[][C], int R, int C)
 			}
 			arr[j / C][j % C] = tmp;
 		}
-	cout << "Iterations completed: " << iter << endl;
-	Aout(arr, R, C);
-	return 0;
+	
+	return iter;
 }
-float SortByShell(float arr[][C], int R, int C)
+int SortByShell(float arr[][C], int R, int C)
 {
 	int iter = 0;
 	int j, step;
@@ -755,11 +743,9 @@ float SortByShell(float arr[][C], int R, int C)
 			}
 			arr[j / C][j % C] = tmp;
 		}
-	cout << "Iterations completed: " << iter << endl;
-	Aout(arr, R, C);
-	return 0;
-}
-short SortByShell(short arr[][C], int R, int C)
+	return iter;
+} 
+int SortByShell(short arr[][C], int R, int C)
 {
 	int iter = 0;
 	int j, step;
@@ -780,11 +766,9 @@ short SortByShell(short arr[][C], int R, int C)
 			}
 			arr[j / C][j % C] = tmp;
 		}
-	cout << "Iterations completed: " << iter << endl;
-	Aout(arr, R, C);
-	return 0;
+	return iter;
 }
-char SortByShell(char arr[][C], int R, int C)
+int SortByShell(char arr[][C], int R, int C)
 {
 	int iter = 0;
 	int j, step;
@@ -805,7 +789,5 @@ char SortByShell(char arr[][C], int R, int C)
 			}
 			arr[j / C][j % C] = tmp;
 		}
-	cout << "Iterations completed: " << iter << endl;
-	Aout(arr, R, C);
-	return 0;
+	return iter;
 }
