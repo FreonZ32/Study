@@ -12,4 +12,3 @@ using std::endl;
 
 const int R = 2;
 const int C = 10;
-int move;

@@ -28,7 +28,7 @@ void main()
 	}
 	else Array(arr, rangeRand);
 	Aout(arr, R, C);
-	int item, move = 0;
+	int item, move;
 	cout << "What do you want to do?\n"
 		<< char(17) << " The sum of the numbers - 1\n"
 		<< char(17) << " Arithmetic mean - 2\n"
@@ -49,8 +49,8 @@ void main()
 	case 4: cout << "The minimum value in the array = " << minValueIn(arr, R, C) << endl; break;
 	case 5: cout << "Shift the array to the right by " << move << " values:\n", ShiftRight(arr, move, R, C); break;
 	case 6: cout << "Shifting the array to the left by " << move << " values:\n", ShiftLeft(arr, move, R, C); break;
-	case 7: cout << "Array sorted by:" << Sort(arr, R, C) << " Iterations\n" << Aout(arr, R, C); break;
-	case 8: cout << "Sorted array using the Shell method by: " << SortByShell(arr, R, C) << " Iterations\n" << Aout(arr, R, C); break;
+	case 7: cout << "Array sorted by:" << Sort(arr, R, C) << " Iterations\n",Aout(arr, R, C); break;
+	case 8: cout << "Sorted array using the Shell method by: " << SortByShell(arr, R, C) << " Iterations\n",Aout(arr, R, C); break;
 	default: cout << "Something went wrong\n"; break;
 	}
 	CLEARANDBACK;

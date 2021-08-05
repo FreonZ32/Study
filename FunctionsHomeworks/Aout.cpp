@@ -1,6 +1,6 @@
 #include"Auout.h"
 
-int Aout(int arr[][C], int R, int C)
+void Aout(int arr[][C], int R, int C)
 {
 	for (int i = 0; i < R; i++)
 	{
@@ -8,9 +8,9 @@ int Aout(int arr[][C], int R, int C)
 		{
 			cout << arr[i][j] << "\t";
 		}cout << endl;
-	}cout << endl; return 0;
+	}cout << endl;
 }
-double Aout(double arr[][C], int R, int C)
+void Aout(double arr[][C], int R, int C)
 {
 	cout.precision(4);
 	for (int i = 0; i < R; i++)
@@ -19,9 +19,9 @@ double Aout(double arr[][C], int R, int C)
 		{
 			cout << arr[i][j] << "\t";
 		}cout << endl;
-	}cout << endl; return 0;
+	}cout << endl;
 }
-float Aout(float arr[][C], int R, int C)
+void Aout(float arr[][C], int R, int C)
 {
 	cout.precision(4);
 	for (int i = 0; i < R; i++)
@@ -30,9 +30,9 @@ float Aout(float arr[][C], int R, int C)
 		{
 			cout << arr[i][j] << "\t";
 		}cout << endl;
-	}cout << endl; return 0;
+	}cout << endl;
 }
-short Aout(short arr[][C], int R, int C)
+void Aout(short arr[][C], int R, int C)
 {
 	for (int i = 0; i < R; i++)
 	{
@@ -40,9 +40,9 @@ short Aout(short arr[][C], int R, int C)
 		{
 			cout << arr[i][j] << "\t";
 		}cout << endl;
-	}cout << endl; return 0;
+	}cout << endl;
 }
-char Aout(char arr[][C], int R, int C)
+void Aout(char arr[][C], int R, int C)
 {
 	for (int i = 0; i < R; i++)
 	{
@@ -50,5 +50,5 @@ char Aout(char arr[][C], int R, int C)
 		{
 			cout << arr[i][j] << "\t";
 		}cout << endl;
-	}cout << endl; return 0;
+	}cout << endl;
 }
