@@ -4,10 +4,10 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-//#define DECIMAL_N_S
+#define DECIMAL_N_S
 //#define HEXADECIMAL_N_S
 //#define HEXADECIMAL_N_S2
-#define HEXADECIMAL_N_S3
+//#define HEXADECIMAL_N_S3
 
 void main()
 {

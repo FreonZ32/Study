@@ -44,7 +44,7 @@ char Sum(char arr[][C], int R, int C)
 
 int Avg(int arr[][C], int R, int C)
 {
-	return Sum(arr, R, C) / R * C;
+	return Sum(arr, R, C) / (R * C);
 }
 double Avg(double arr[][C], int R, int C)
 {

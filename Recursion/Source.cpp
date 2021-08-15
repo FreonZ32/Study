@@ -5,44 +5,55 @@ using std::cin;
 using std::endl;
 
 #define CAB cout << endl;system("pause");system("cls");main();
-#define NUMBIN cout << "\nВведите число: "; cin >> numberin;
+#define NUMBIN cout << "\nEnter a number: "; cin >> numberin;
 
 int Factorial(int numberin);
 double Power(double numberin, int count);
-int Fibonachchi(int numberin);
+int Fibonachchi(int numberin);	//Up to the number
+int Fibonachchi2(int numberin);	//Number of numbers
 
 void main()
 {
-	setlocale(LC_ALL, "rus");
+	//setlocale(LC_ALL, "rus");
 	double numberin, pow;
 	int choise, fact, lvl, facttest;
-	cout << "Что хотите вычислить?\nФакториал числа - \t1\nВозведение в степень - \t2\nРяд Фибоначчи - \t3\nВыбираю - "; cin >> choise;
+	cout << "What do you want to calculate?\nFactorial of a number - \t1\nExponentiation - \t\t2\nFibonacci Series (UTTN) - \t3\nFibonacci Series (NON) - \t4\nI choose - "; cin >> choise;
 	if (choise == 1)
 	{
 		NUMBIN;
 		facttest = numberin;
 		if (numberin < 0)
 		{
-			cout << "Невозможно вычислить факториал отрицательногог числа!"; CAB;
+			cout << "It is impossible to calculate the factorial of a negative number!"; CAB;
 		}
 		else if (numberin == 0 || numberin == 1)
 		{
-			cout << "Факториал чисел 0 и 1 равен 1!"; CAB;
+			cout << "The factorial of the numbers 0 and 1 is 1!"; CAB;
 		}
 		else if (facttest != numberin)
 		{
-			cout << "Факториал может быть только целочисленным!"; CAB;
+			cout << "The factorial can only be an integer!"; CAB;
 		}
 		fact = Factorial(numberin);
-		cout << "Факториал числа: " << numberin << " равен: " << fact << endl;
+		cout << "Factorial of a number: " << numberin << " equal to:" << fact << endl;
 	}
 	else if (choise == 2)
 	{
-		cout << "Введите число и степень: "; cin >> numberin >> lvl;
+		cout << "Enter the number and degree: "; cin >> numberin >> lvl;
 		pow = Power(numberin, lvl),
-			cout << "Число " << numberin << " в степени " << lvl << " равнo: " << pow;
+			cout << "Number " << numberin << " in the extent " << lvl << " equal to: " << pow;
 	}
 	else if (choise == 3)
+	{
+		NUMBIN;
+		int k = 0;
+		while (Fibonachchi2(k) <= numberin)
+		{
+			cout << Fibonachchi2(k) << endl;
+			k++;
+		}
+	}
+	else if (choise == 4)
 	{
 		NUMBIN;
 		for (int i = 0; i < numberin; i++)
@@ -50,7 +61,7 @@ void main()
 			cout << Fibonachchi(i) << endl;
 		}
 	}
-	else { cout << "Неверный вариант выбора!"; CAB; }
+	else { cout << "Wrong choice!"; CAB; }
 	CAB;
 }
 
@@ -71,6 +82,14 @@ double Power(double numberin, int count)
 		return numberin * Power(numberin, count - 1);
 }
 int Fibonachchi(int numberin)
+{
+	if (numberin == 0)
+		return 0;
+	else if (numberin == 1)
+		return 1;
+	else return Fibonachchi(numberin - 1) + Fibonachchi(numberin - 2);
+}
+int Fibonachchi2(int numberin)
 {
 	if (numberin == 0)
 		return 0;
