@@ -9,8 +9,10 @@ using std::endl;
 
 int Factorial(int numberin);
 double Power(double numberin, int count);
-int Fibonachchi(int numberin);	//Up to the number
-int Fibonachchi2(int numberin);	//Number of numbers
+int Fibonachchi(int numberin);	//Up to the number /My code
+int Fibonachchi2(int numberin);	//Number of numbers	/My code
+void Fibonachchi3(int numberin);
+void Fibonachchi4(int numberin, int a = 0, int b = 1,int c = 0);
 
 void main()
 {
@@ -61,6 +63,12 @@ void main()
 			cout << Fibonachchi(i) << endl;
 		}
 	}
+	else if (choise == 5)
+	{
+		NUMBIN;
+		Fibonachchi3(numberin);
+
+	}
 	else { cout << "Wrong choice!"; CAB; }
 	CAB;
 }
@@ -68,9 +76,10 @@ void main()
 int Factorial(int numberin)
 {
 
-	if (numberin)
+	/*if (numberin)
 		return numberin * Factorial(numberin - 1);
-	return 1;
+	return 1;*/
+	return numberin == 0 ? 1 : numberin * Factorial(numberin - 1);
 }
 double Power(double numberin, int count)
 {
@@ -97,4 +106,21 @@ int Fibonachchi2(int numberin)
 	else if (numberin == 1)
 		return 1;
 	else return Fibonachchi(numberin - 1) + Fibonachchi(numberin - 2);
+}
+void Fibonachchi3(int numberin)
+{
+	static int a = 0, b = 1,c = 1;
+	if (a > numberin)return;
+	cout << a << endl;
+	/*a = b;
+	b = c;
+	c = a + b;*/
+	c = (a=b) + (b=c);
+	Fibonachchi3(numberin);
+}
+void Fibonachchi4(int numberin, int a, int b,int c)
+{
+	if (c > numberin)return;
+	cout << a << endl; c++;
+	Fibonachchi4(numberin, b, a + b);
 }
