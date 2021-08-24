@@ -74,12 +74,14 @@ int Factorial(int numberin)
 }
 double Power(double numberin, int count)
 {
-	if (count == 0)
+	/*if (count == 0)
 		return 1;
 	else if (count < 0)
-		return 1 / numberin * Power(numberin, count + 1);
+		return 1./numberin * Power(numberin, count + 1);
 	else
-		return numberin * Power(numberin, count - 1);
+		return numberin * Power(numberin, count - 1);*/
+	return count == 0 ? 1 : count > 0 ? numberin * Power(numberin, count - 1) : 1. / numberin * Power(numberin, count + 1);
+
 }
 int Fibonachchi(int numberin)
 {
