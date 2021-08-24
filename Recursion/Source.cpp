@@ -82,6 +82,7 @@ double Power(double numberin, int count)
 		return numberin * Power(numberin, count - 1);*/
 	return count == 0 ? 1 : count > 0 ? numberin * Power(numberin, count - 1) : 1. / numberin * Power(numberin, count + 1);
 
+
 }
 int Fibonachchi(int numberin)
 {
