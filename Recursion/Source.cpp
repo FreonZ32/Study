@@ -126,7 +126,7 @@ void Fibonachchi3(int numberin)
 }
 void Fibonachchi4(int numberin)
 {
-	static long long int a = 0, b = 1, c = 1, count = 0;
+	static long long int a = 0, b = 1, c = 1; static int count = 0;
 	if (count > numberin)return;
 	cout << a << endl;
 	c = (a = b) + (b = c);
