@@ -11,8 +11,8 @@ int Factorial(int numberin);
 double Power(double numberin, int count);
 int Fibonachchi(int numberin);	//Up to the number /My code
 int Fibonachchi2(int numberin);	//Number of numbers	/My code
-void Fibonachchi3(int numberin); //Lesson Code
-void Fibonachchi4(int numberin);
+void Fibonachchi3(int numberin); //Up to the number //Lesson Code
+void Fibonachchi4(int numberin); //Number of numbers / Lesson Code
 
 void main()
 {
