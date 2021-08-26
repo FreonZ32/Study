@@ -11,7 +11,7 @@ int Factorial(int numberin);
 double Power(double numberin, int count);
 int Fibonachchi(int numberin);	//Up to the number /My code
 int Fibonachchi2(int numberin);	//Number of numbers	/My code
-void Fibonachchi3(int numberin);
+void Fibonachchi3(int numberin); //Lesson Code
 void Fibonachchi4(int numberin, int a = 0, int b = 1,int c = 0);
 
 void main()
@@ -19,7 +19,7 @@ void main()
 	//setlocale(LC_ALL, "rus");
 	double numberin, pow;
 	int choise, fact, lvl, facttest;
-	cout << "What do you want to calculate?\nFactorial of a number - \t1\nExponentiation - \t\t2\nFibonacci Series (UTTN) - \t3\nFibonacci Series (NON) - \t4\nI choose - "; cin >> choise;
+	cout << "What do you want to calculate?\nFactorial of a number - \t1\nExponentiation - \t\t2\nFibonacci Series (UTTN) - \t3\nFibonacci Series (NON) - \t4\nFibonachchi Series (LC) - \t5\nI choose - "; cin >> choise;
 	if (choise == 1)
 	{
 		NUMBIN;
@@ -108,7 +108,7 @@ int Fibonachchi2(int numberin)
 }
 void Fibonachchi3(int numberin)
 {
-	static int a = 0, b = 1,c = 1;
+	static int a = 0, b = 1, c = 1;
 	if (a > numberin)return;
 	cout << a << endl;
 	/*a = b;
