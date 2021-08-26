@@ -1,36 +1,40 @@
 #include<iostream>
+#include<conio.h>
 using namespace std;
 
-void elevator(int floor)
-{
-	if (floor == 0)
-	{
-		cout << "Вы в подвале!" << endl;
-		return;
-	}
-	cout << floor << endl;
-	elevator(floor-1);
-	cout << floor << endl;
-}
- 
-int factorial(int n)
-{
-	/*if (n == 0)return 1;
-	return  n * factorial(n - 1);*/
-	return n == 0 ? 1 : n * factorial(n - 1);
-}
-double power(int a, int n)
-{
-	if (n == 0)return 1;
-	return a * power(a, n - 1);
-}
- 
 void main()
 {
-		setlocale(LC_ALL, "rus");
-		/*cout << "Hello world!";
-		main();*/
-		int n;
-		cout << "Введите число: "; cin >> n;
-		cout << factorial(n);
+	const int L = 6, C = 6;
+	int l = 0,k = 0;
+	char arr[L][C] = {};
+	for (int i = 0; i < L; i++)
+	{
+		for (int j = 0; j < C; j++)
+		{
+			if (i == 0 && (j >= 2 && j <= 4))
+			{
+				arr[i][j] = (char)l+49;
+				l++;
+			}
+			else if (j == 0 && (i >=2 && i <=4))
+			{
+				arr[i][j] = (char)k+97;
+				k++;
+			}
+			else if (j == 1)
+				arr[i][j] = (char)219;
+			else if (i == 1)
+				arr[i][j] = (char)254;
+			else arr[i][j] = (char)255;
+		}
+	}
+
+	for (int i = 0; i < L; i++)
+	{
+		for (int j = 0; j < C; j++)
+		{
+			cout << arr[i][j];
+		}cout << endl;
+	}
+
 }
