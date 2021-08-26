@@ -12,14 +12,15 @@ double Power(double numberin, int count);
 int Fibonachchi(int numberin);	//Up to the number /My code
 int Fibonachchi2(int numberin);	//Number of numbers	/My code
 void Fibonachchi3(int numberin); //Lesson Code
-void Fibonachchi4(int numberin, int a = 0, int b = 1,int c = 0);
+void Fibonachchi4(int numberin);
 
 void main()
 {
 	//setlocale(LC_ALL, "rus");
 	double numberin, pow;
 	int choise, fact, lvl, facttest;
-	cout << "What do you want to calculate?\nFactorial of a number - \t1\nExponentiation - \t\t2\nFibonacci Series (UTTN) - \t3\nFibonacci Series (NON) - \t4\nFibonachchi Series (LC) - \t5\nI choose - "; cin >> choise;
+	cout << "What do you want to calculate?\nFactorial of a number -\t1\nExponentiation - \t\t2\nFibonacci Series (UTTN) - \t3"
+		"\nFibonacci Series (NON) - \t4\nFibonachchi Series (LC_UTTN) - \t5\nFibonachchi Series (LC_NON) - \t6\nI choose - "; cin >> choise;
 	if (choise == 1)
 	{
 		NUMBIN;
@@ -67,6 +68,12 @@ void main()
 	{
 		NUMBIN;
 		Fibonachchi3(numberin);
+
+	}
+	else if (choise == 6)
+	{
+		NUMBIN;
+		Fibonachchi4(numberin);
 
 	}
 	else { cout << "Wrong choice!"; CAB; }
@@ -117,9 +124,12 @@ void Fibonachchi3(int numberin)
 	c = (a=b) + (b=c);
 	Fibonachchi3(numberin);
 }
-void Fibonachchi4(int numberin, int a, int b,int c)
+void Fibonachchi4(int numberin)
 {
-	if (c > numberin)return;
-	cout << a << endl; c++;
-	Fibonachchi4(numberin, b, a + b);
+	static long long int a = 0, b = 1, c = 1, count = 0;
+	if (count > numberin)return;
+	cout << a << endl;
+	c = (a = b) + (b = c);
+	count++;
+	Fibonachchi4(numberin);
 }
