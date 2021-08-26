@@ -75,7 +75,6 @@ void main()
 
 int Factorial(int numberin)
 {
-
 	/*if (numberin)
 		return numberin * Factorial(numberin - 1);
 	return 1;*/
