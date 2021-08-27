@@ -1,9 +1,45 @@
 #include<iostream>
 using namespace std;
 
+//#define POITER_BASICS
+#define POITERS_AND_ARRAYS
+
 void main()
 {
 	setlocale(LC_ALL, "rus");
+
+#ifdef POITER_BASICS
+	int a = 2;
+	int* pa = &a;
+	cout << a << endl;
+	cout << &a << endl;
+	cout << pa << endl;
+	cout << *pa << endl;
+
+	int* pr;
+	int b = 3;
+#endif // POITER_BASICS
+
+#ifdef POITERS_AND_ARRAYS
+	const int n = 5;
+	int arr[n] = { 3,4,8,13,21 };
+	int* a = arr;
+	//cout << arr << endl;
+	//cout << *arr << endl;
+	for (int i = 0; i < n; i++)	//Output of addresses of array elements, and then the values at these addresses.
+	{
+		cout << arr + i << " = " << *(arr + i) << "\t";
+		cout << a << " = " << *a << endl;
+		a++;
+	}
+	cout << endl;
+	char arr2[] = "не очень-то полезные указатели, однако!";
+	char* b = arr2;
+	char* b0 = &arr2[12];
+	cout << b0;
+	
+#endif // POITERS_AND_ARRAYS
+
 
 	/*const int X = 5;
 	int a[X] = { 1,2,3,4,5 };
@@ -21,28 +57,4 @@ void main()
 	int * b = &a;
 	int c = *b;
 	cout << c << " " << b+1 << " " << b;*/
-
-	//int arr[10] = {3,6,9,12,15,18,21,24,27,30};
-
-	//int* a = &arr[0];
-
-	//for (int i = 0; i < 10; i++)
-	//{
-	//	//cout << arr+i << "=" << *(arr + i) << endl;
-	//	cout << a << " = " << *a << endl;
-	//	a++;
-	//}
-
-	char arr[] = "Hello!";
-	char* a = arr;
-
-	cout << "a = " << a << endl;
-
-	char* a3 = &arr[3];
-	char* a0 = &arr[0];
-
-	cout << "a3 = " << *a3 << endl;
-	cout << "a0 = " << (int)a0 << endl;
-	cout << "diff = " << a3 - a0 << endl;
-	
 }
