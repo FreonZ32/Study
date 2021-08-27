@@ -33,9 +33,9 @@ void main()
 		a++;
 	}
 	cout << endl;
-	char arr2[] = "не очень-то полезные указатели, однако!";
+	char arr2[] = "not very useful pointers, however!";
 	char* b = arr2;
-	char* b0 = &arr2[12];
+	char* b0 = &arr2[4];
 	cout << b0;
 	
 #endif // POITERS_AND_ARRAYS
