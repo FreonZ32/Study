@@ -12,7 +12,7 @@ void DA_EvenAndUneven(int arr[],int number);
 void DA_DE(int arr[], int arrEven[],int arrUneven[], int number);
 void DA_DE_OUT(int arrEven[], int arrUneven[]);
 
-int main()
+void main()
 {
 	setlocale(LC_ALL, "rus");
 	cout << "Enter the size of the array and it's limit: "; cin >> number >>range;
@@ -29,7 +29,6 @@ int main()
 	delete[] arr;
 	delete[] arrEven;
 	delete[] arrOdd;
-	return 0;
 }
 
 void DA_filling(int arr[],int number, int range)
