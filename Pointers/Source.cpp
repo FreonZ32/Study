@@ -31,15 +31,28 @@ void main()
 		cout << arr + i << " = " << *(arr + i) << "\t";
 		cout << a << " = " << *a << endl;
 		a++;
-	}
+	} a -= n;
 	cout << endl;
 	char arr2[] = "not very useful pointers, however!";
 	char* b = arr2;
 	char* b0 = &arr2[4];
 	cout << b0;
+
+	
 	
 #endif // POITERS_AND_ARRAYS
 
+	/*int buf = arr[0];	
+		for (int i = 0; i < n;i++)
+		{
+			if (i == n - 1)*(a + i) = buf;
+			else *(a + i) = arr[i + 1];
+		}
+		cout << endl;
+		for (int i = 0; i < n; i++)
+		{
+			cout << arr[i];
+		}*/
 
 	/*const int X = 5;
 	int a[X] = { 1,2,3,4,5 };
