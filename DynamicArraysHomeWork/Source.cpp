@@ -6,11 +6,11 @@ int range;
 int even = 0; 
 int uneven = 0;
 
-void DA_filling(int arr[],int number, int range);
-void DA_Out(int arr[], int number);
-void DA_EvenAndUneven(int arr[],int number);
-void DA_DE(int arr[], int arrEven[],int arrUneven[], int number);
-void DA_DE_OUT(int arrEven[], int arrUneven[]);
+void DA_filling(int arr[],int number, int range);	//Filling the main arrow
+void DA_Out(int arr[], int number);	//Displaying the main array
+void DA_EvenAndUneven(int arr[],int number);	//Calculation of even and odd numbers for new arrays
+void DA_DE(int arr[], int arrEven[],int arrUneven[], int number);	//Fill out new arrays
+void DA_DE_OUT(int arrEven[], int arrUneven[]);	//Displaying new arrays on the screen
 
 void main()
 {
