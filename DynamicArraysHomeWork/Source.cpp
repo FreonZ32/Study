@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 
+//Переделать без глобальных переменных. Глобальные только константы!
+
 int number;
 int range;
 int even = 0; 
@@ -15,6 +17,7 @@ void DA_DE_OUT(int arrEven[], int arrUneven[]);	//Displaying new arrays on the s
 void main()
 {
 	setlocale(LC_ALL, "rus");
+	
 	cout << "Enter the size of the array and it's limit: "; cin >> number >>range;
 	int* arr = new int[number];
 
