@@ -52,18 +52,10 @@ void Print(int arr[], int &n)
 }
 int* puch_back(int arr[], int &n, int value)
 {
-	//1)
 	int* buffer = new int[n + 1];
-	//2)
-	for (int i = 0; i < n; i++)
-	{
-		buffer[i] = arr[i];
-	}
-	//3)
+	for (int i = 0; i < n; i++)buffer[i] = arr[i];
 	delete[] arr;
-	//4)
 	arr = buffer;
-	//5)
 	arr[n] = value;
 	n++;
 	return arr;
