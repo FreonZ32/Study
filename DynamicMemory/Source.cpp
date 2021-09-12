@@ -19,7 +19,6 @@ void main()
 	int n;
 	cout << "¬ведите размер массива: "; cin >> n;
 	int* arr = new int[n];
-	//int* mainarr = &arr[n];
 	FillRand(arr, n);
 	Print(arr, n);
 	int value;
