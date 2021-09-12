@@ -1,74 +1,54 @@
-#include<iostream>
+п»ї#include<iostream>
+#include<conio.h>
 using namespace std;
 using std::cin;
 using std::cout;
 using std::endl;
 
-void FillRand(int arr[], const unsigned int n);
-void Print(int arr[], const unsigned int n);
+void EndAndAgain(int arr[], int& n, int indif, int value, int escape);
+void FillRand(int arr[], int &n);
+void Print(int arr[], int &n);
 int* puch_back(int arr[], int &n, int value);
 int* puch_front(int arr[], int& n, int value);
 int* insert(int arr[], int& n,int indif, int value);
+int* replacement(int arr[], int& n, int indif, int value);
 int* pop_back(int arr[], int& n);
 int* pop_front(int arr[], int& n);
 int* erase(int arr[], int& n, int indif);
+int invalue(int &value);
+int inindif(int& indif);
+void Display(int arr[], int& n, int indif, int value, int escape);
+void body(int arr[], int& n, int indif, int value, int escape);
 
 void main()
 {
-	setlocale(LC_ALL, "rus");
-	int n;
-	cout << "Введите размер массива: "; cin >> n;
+	//setlocale(LC_ALL, "rus");
+	int n = 0;
+	bool escape = false;
+	int value = 0, indif = 0;
+	cout << "Enter the size of the array: "; cin >> n;
 	int* arr = new int[n];
 	FillRand(arr, n);
-	Print(arr, n);
-	int value;
-	cout << "Введите дополнительное значение: "; cin >> value;
-	cout << "1)Вставка значения в конец: \t\t";
-	arr = puch_back(arr, n, value);
-	Print(arr, n);
-	cout << "2)Вставка значения в начало: \t\t";
-	arr = puch_front(arr, n, value);
-	Print(arr, n);
-	int indif;
-	cout << "Введите индификатор вставки: "; cin >> indif;
-	if (indif >= n)cout << "Индекс превышает размер массива!"; 
-	else 
-	{
-		cout << "3)Вставка значения по индификатору: \t";
-		arr = insert(arr, n, indif, value);
-		Print(arr, n);
-	}
-	cout << "4)Удаление значения в конце: \t\t";
-	arr = pop_back(arr, n);
-	Print(arr, n);
-	cout << "5)Удаление значения в начале: \t\t";
-	arr = pop_front(arr, n);
-	Print(arr, n);
-	cout << "Введите индефикатор удаления: "; cin >> indif;
-	if(indif >=n)cout << "Индекс превышает размер массива!";
-	else
-	{
-		cout << "3)Удаление значения по индификатору : \t";
-		arr = erase(arr, n, indif);
-		Print(arr, n);
-	}
-	
-	delete[] arr;
+	body(arr, n, indif, value, escape);
 }
 
-void FillRand(int arr[], const unsigned int n)
+void EndAndAgain(int arr[], int& n, int indif, int value, int escape)
+{
+	Print(arr, n), system("pause"), system("cls"), body(arr, n, indif, value, escape);
+}
+void FillRand(int arr[], int &n)
 {
 	for (int i = 0; i < n; i++)
 	{
 		arr[i] = rand() % 100;
 	}
 }
-void Print(int arr[], const unsigned int n)
+void Print(int arr[], int &n)
 {
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << "\t";
-	}cout << "|" << endl;
+	}cout << endl;
 }
 int* puch_back(int arr[], int &n, int value)
 {
@@ -103,6 +83,11 @@ int* puch_front(int arr[], int& n, int value)
 }
 int* insert(int arr[], int& n, int indif, int value)
 {
+	if (indif > n)
+	{
+		cout << " The value exceeds the size of the array!\n";
+		return arr;
+	}
 	int* buffer = new int[n + 1];
 	for (int i = 0, k = 0; i < n; i++,k++)
 	{
@@ -115,8 +100,30 @@ int* insert(int arr[], int& n, int indif, int value)
 	n++;
 	return arr;
 }
+int* replacement(int arr[], int& n, int indif, int value)
+{
+	if (indif > n)
+	{
+		cout << " The value exceeds the size of the array!\n";
+		return arr;
+	}
+	int* buffer = new int[n];
+	for (int i = 0; i < n; i++)
+	{
+		if (i == indif) { buffer[i] = value; i++; }
+		buffer[i] = arr[i];
+	}
+	delete[] arr;
+	arr = buffer;
+	return arr;
+}
 int* pop_back(int arr[], int& n)
 {
+	if (n-- == 1)
+	{
+		cout << " Where is less? \n";
+		return arr;
+	}
 	n--;
 	int* buffer = new int[n];
 	for (int i = 0; i < n; i++)
@@ -129,6 +136,11 @@ int* pop_back(int arr[], int& n)
 }
 int* pop_front(int arr[], int& n)
 {
+	if (n-- == 1)
+	{
+		cout << " Where is less? \n";
+		return arr;
+	}
 	int* buffer = new int[n-1];
 	for (int i = 0; i < n-1; i++)
 	{
@@ -141,6 +153,11 @@ int* pop_front(int arr[], int& n)
 }
 int* erase(int arr[], int& n, int indif)
 {
+	if (indif > n)
+	{
+		cout << " The value exceeds the size of the array!\n";
+		return arr;
+	}
 	int* buffer = new int[n-1];
 	for (int i = 0,k = 0; i < n; i++)
 	{
@@ -152,3 +169,42 @@ int* erase(int arr[], int& n, int indif)
 	n--;
 	return arr;
 }
+int invalue(int &value)
+{
+	cout << " Enter additional value: >"; cin >> value;
+	return value;
+}
+int inindif(int &indif)
+{
+	cout << " Enter the index: >"; cin >> indif;
+	return indif;
+}
+void Display(int arr[], int& n, int indif, int value, int escape)
+{
+	cout << "\n\tWhat do you want to do? \n 1) Insertion in the end of the array \n 2) Insert values in the beginning of the array \n 3) Insertion of the value of the index \n "
+		<< "4) Replacing the value of index \n 5) Deleting the last element of the array \n 6) Deleting the zero element of the array "
+		<<"\n 7) Deleting an array according to the specified index \n 8) Create a new array \n 9) Exit from the program \n>";
+	switch (_getch())
+	{
+	case '1':arr = puch_back(arr, n, invalue(value)), EndAndAgain(arr, n, indif, value, escape); break;
+	case '2':arr = puch_front(arr, n, invalue(value)), EndAndAgain(arr, n, indif, value, escape); break;
+	case '3':arr = insert(arr,n,inindif(indif),invalue(value)), EndAndAgain(arr, n, indif, value, escape); break;
+	case '4':arr = replacement(arr, n, inindif(indif), invalue(value)), EndAndAgain(arr, n, indif, value, escape); break;
+	case '5':arr = pop_back(arr,n), EndAndAgain(arr, n, indif, value, escape); break;
+	case '6':arr = pop_front(arr,n), EndAndAgain(arr, n, indif, value, escape); break;
+	case '7':arr = erase(arr,n,inindif(indif)), EndAndAgain(arr, n, indif, value, escape); break;
+	case '8': delete[] arr, system("pause"), system("cls"), main(); break;
+	case '9': delete[] arr, escape = true; cout << endl << " Exit "; break;
+	default: cout << "Error!", delete[] arr;
+	}
+}
+
+void body(int arr[], int& n, int indif, int value, int escape)
+{
+	do
+	{
+		Print(arr, n);
+		Display(arr, n, indif, value, escape);
+	} while (escape);
+}
+
