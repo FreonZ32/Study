@@ -111,7 +111,7 @@ int* replacement(int arr[], int& n, int indif, int value)
 }
 int* pop_back(int arr[], int& n)
 {
-	if (n-- == 1)
+	if ((n-1) == 1)
 	{
 		cout << " Where is less? \n";
 		return arr;
@@ -128,7 +128,7 @@ int* pop_back(int arr[], int& n)
 }
 int* pop_front(int arr[], int& n)
 {
-	if (n-- == 1)
+	if ((n-1) == 1)
 	{
 		cout << " Where is less? \n";
 		return arr;
