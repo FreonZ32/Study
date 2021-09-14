@@ -19,13 +19,12 @@ void main()
 	int n;
 	cout << "Введите размер массива: "; cin >> n;
 	int* arr = new int[n];
-	//int& ra = arr[n];
 	FillRand(arr, n);
 	Print(arr, n);
 	int value;
 	cout << "Введите дополнительное значение: "; cin >> value;
 	cout << "1)Вставка значения в конец: \t\t";
-	puch_back(arr, n, value);
+	arr = puch_back(arr, n, value);
 	Print(arr, n);
 	cout << "2)Вставка значения в начало: \t\t";
 	arr = puch_front(arr, n, value);
