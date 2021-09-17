@@ -21,7 +21,7 @@ int* erase(int arr[], int& n, int indif);
 #ifdef DYNAMIC_MEMORY_2
 void D_FillRand(int* arr2[], int& rows, int& cols);
 void D_Print(int* arr2[], int& rows, int& cols);
-void D_puch_back_cols(int* arr2[], int& rows, int& cols, int value);
+//void D_puch_back_cols(int arr2[], int& rows, int& cols, int value);
 #endif // DYNAMIC_MEMORY_2
 
 void main()
@@ -80,15 +80,42 @@ void main()
 	//////////////////////////////////////////////////////////////////
 	D_FillRand(arr2, rows, cols);
 	D_Print(arr2, rows, cols);
+	cout << &arr2 << endl;
 	cout << "¬ведите доп значение: "; cin >> value;
-	
+	cols += value;
+	int** buffer = new int* [rows];
+	for (int i = 0; i < rows; i++)
+	{
+		buffer[i] = new int[cols];
+	}
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols - 1; j++)
+		{
+			buffer[i][j] = arr2[i][j];
+		}
+	}
+	for (int i = 0; i < rows; i++)
+	{
+		delete[] arr2[i];
+	}
+	delete[] arr2;
+	arr2 = buffer;
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = cols - value; j < cols; j++)
+		{
+			arr2[i][j] = 0;
+		}
+	}
+	cout << &arr2 << endl;
+	D_Print(arr2, rows, cols);
 	//////////////////////////////////////////////////////////////////
 	for (int i = 0; i < rows; i++)
 	{
 		delete[] arr2[i];
 	}
 	delete[] arr2;
-
 }
 
 #ifdef DYNAMIC_MEMORY_1
@@ -213,23 +240,8 @@ void D_Print(int* arr2[], int& rows, int& cols)
 		cout << endl;
 	}
 }
-void D_puch_back_cols(int* arr2[], int& rows, int& cols, int value)
+void D_puch_back_cols(int arr2, int& rows, int& cols, int value)
 {
-	int** buffer = new int* [rows];
-	for (int i = 0; i < rows; i++)buffer[i] = new int[cols + value];
-	for (int i = 0; i < rows; i++)
-	{
-		for (int j = 0; j < cols; j++)
-		{
-			buffer[i][j] = arr2[i][j];
-		}
-	}
-	for (int i = 0; i < rows; i++)
-	{
-		delete[] arr2[i];
-	}
-	delete[] arr2;
-	arr2 = buffer;
-	cols += value;
+	
 }
 #endif // DYNAMIC_MEMORY_2
