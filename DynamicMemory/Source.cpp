@@ -4,16 +4,16 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-//#define DYNAMIC_MEMORY_1
-#define DYNAMIC_MEMORY_2
+#define DYNAMIC_MEMORY_1
+//#define DYNAMIC_MEMORY_2
 
 #ifdef DYNAMIC_MEMORY_1
 void FillRand(int arr[], const unsigned int n);
 void Print(int arr[], const unsigned int n);
-int* puch_back(int arr[], int& n, int value);
+void puch_back(int*& arr, int& n, int value);
 int* puch_front(int arr[], int& n, int value);
 int* insert(int arr[], int& n, int indif, int value);
-int* pop_back(int arr[], int& n);
+void pop_back(int*& arr, int& n);
 int* pop_front(int arr[], int& n);
 int* erase(int arr[], int& n, int indif);
 #endif // DYNAMIC_MEMORY_1
@@ -36,7 +36,7 @@ void main()
 	int value;
 	cout << "Введите дополнительное значение: "; cin >> value;
 	cout << "1)Вставка значения в конец: \t\t";
-	arr = puch_back(arr, n, value);
+	puch_back(arr, n, value);
 	Print(arr, n);
 	cout << "2)Вставка значения в начало: \t\t";
 	arr = puch_front(arr, n, value);
@@ -51,7 +51,7 @@ void main()
 		Print(arr, n);
 	}
 	cout << "4)Удаление значения в конце: \t\t";
-	arr = pop_back(arr, n);
+	pop_back(arr, n);
 	Print(arr, n);
 	cout << "5)Удаление значения в начале: \t\t";
 	arr = pop_front(arr, n);
@@ -127,10 +127,10 @@ void Print(int arr[], const unsigned int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		cout << arr[i] << "\t";
+		cout << arr[i] << " ";
 	}cout << "|" << endl;
 }
-int* puch_back(int arr[], int& n, int value)
+void puch_back(int*& arr, int& n, int value)
 {
 	//1)
 	int* buffer = new int[n + 1];
@@ -146,7 +146,7 @@ int* puch_back(int arr[], int& n, int value)
 	//5)
 	arr[n] = value;
 	n++;
-	return arr;
+	//return arr;
 }
 int* puch_front(int arr[], int& n, int value)
 {
@@ -175,7 +175,7 @@ int* insert(int arr[], int& n, int indif, int value)
 	n++;
 	return arr;
 }
-int* pop_back(int arr[], int& n)
+void pop_back(int*& arr, int& n)
 {
 	n--;
 	int* buffer = new int[n];
@@ -185,7 +185,7 @@ int* pop_back(int arr[], int& n)
 	}
 	delete[] arr;
 	arr = buffer;
-	return arr;
+	//return arr;
 }
 int* pop_front(int arr[], int& n)
 {
