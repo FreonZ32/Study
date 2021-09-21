@@ -68,6 +68,7 @@ void main()
 	delete[] arr;
 #endif // DYNAMIC_MEMORY_1
 
+#ifdef DYNAMIC_MEMORY_2
 	int rows = 0, cols = 0;
 	int value;
 	cout << "¬ведите количество строк: "; cin >> rows;
@@ -82,15 +83,15 @@ void main()
 	D_Print(arr2, rows, cols);
 	cout << &arr2 << endl;
 	cout << "¬ведите доп значение: "; cin >> value;
-	cols += value;
+	//cols += value;
 	int** buffer = new int* [rows];
 	for (int i = 0; i < rows; i++)
 	{
-		buffer[i] = new int[cols];
+		buffer[i] = new int[cols + value]{};
 	}
 	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < cols - 1; j++)
+		for (int j = 0; j < cols; j++)
 		{
 			buffer[i][j] = arr2[i][j];
 		}
@@ -101,13 +102,7 @@ void main()
 	}
 	delete[] arr2;
 	arr2 = buffer;
-	for (int i = 0; i < rows; i++)
-	{
-		for (int j = cols - value; j < cols; j++)
-		{
-			arr2[i][j] = 0;
-		}
-	}
+	//buffer = nullptr;
 	cout << &arr2 << endl;
 	D_Print(arr2, rows, cols);
 	//////////////////////////////////////////////////////////////////
@@ -116,6 +111,8 @@ void main()
 		delete[] arr2[i];
 	}
 	delete[] arr2;
+#endif // DYNAMIC_MEMORY_2
+
 }
 
 #ifdef DYNAMIC_MEMORY_1
@@ -153,7 +150,7 @@ int* puch_back(int arr[], int& n, int value)
 }
 int* puch_front(int arr[], int& n, int value)
 {
-	int* buffer = new int[n + 1];
+	int* buffer = new int[n+1];
 	for (int i = 0; i < n; i++)
 	{
 		buffer[i + 1] = arr[i];
