@@ -6,6 +6,7 @@ using std::endl;
 
 void FillRand(int arr[], const unsigned int n);
 void Print(int arr[], const unsigned int n);
+void Print2_0(int* arr, const unsigned int n);
 void puch_back(int*& arr, int& n, int value);
 void puch_front(int*& arr, int& n, int value);
 void insert(int*& arr, int& n, int indif, int value);
@@ -20,7 +21,7 @@ void main()
 	cout << "Введите размер массива: "; cin >> n;
 	int* arr = new int[n];
 	FillRand(arr, n);
-	Print(arr, n);
+	Print2_0(arr, n);
 	int value;
 	cout << "Введите дополнительное значение: "; cin >> value;
 	cout << "1)Вставка значения в конец: \t\t";
@@ -67,6 +68,13 @@ void Print(int arr[], const unsigned int n)
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << " ";
+	}cout << "|" << endl;
+}
+void Print2_0(int* arr, const unsigned int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << *arr + i << " ";
 	}cout << "|" << endl;
 }
 void puch_back(int*& arr, int& n, int value)
