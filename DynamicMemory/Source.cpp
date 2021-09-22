@@ -118,6 +118,7 @@ void main()
 	clear(arr2, rows, cols);
 #endif // DYNAMIC_MEMORY_2
 }
+
 int** allocate(int& rows, int& cols)
 {
 	int** arr2 = new int* [rows];
