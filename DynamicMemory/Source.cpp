@@ -14,6 +14,7 @@ void D_FillRand(int** arr2, const unsigned int rows, const unsigned int cols);
 
 void Print(int arr[], const unsigned int n);
 void D_Print(int** arr2, const unsigned int rows, const unsigned int cols);
+void Print2_0(int** arr2, const unsigned int rows, const unsigned int cols);
 
 int* push_back(int arr[], int& n, int value);
 void push_row_back(int**& arr2, int& rows, int& cols);
@@ -91,7 +92,8 @@ void main()
 	int** arr2 = allocate(rows, cols);
 	////////////////////
 	D_FillRand(arr2, rows, cols);
-	D_Print(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	Print2_0(arr2, rows, cols);
 	cout << "Добавляет строку в конец массива" << endl;
 	push_row_back(arr2, rows, cols);
 	D_Print(arr2, rows, cols);
@@ -159,6 +161,16 @@ void D_Print(int** arr2, const unsigned int rows, const unsigned int cols)
 			cout << arr2[i][j] << " ";
 		}
 		cout << endl;
+	}
+}
+void Print2_0(int** arr2, const unsigned int rows, const unsigned int cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			cout << *(*(arr2 + i) + j) << " ";
+		}cout << endl;
 	}
 }
 
