@@ -128,6 +128,7 @@ void FillRand(int arr[], const unsigned int n)
 		arr[i] = rand() % 100;
 	}
 }
+
 void D_FillRand(int** arr2, const unsigned int rows, const unsigned int cols)
 {
 	for (int i = 0; i < rows; i++)
