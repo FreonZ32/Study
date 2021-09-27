@@ -7,106 +7,121 @@ using std::endl;
 //#define DYNAMIC_MEMORY_1
 #define DYNAMIC_MEMORY_2
 
-int** allocate(int& rows, int& cols);
+template<typename T>
+void allocate(T**& arr2, int& rows, int& cols);
 
 void FillRand(int arr[], const unsigned int n);
-void D_FillRand(int** arr2, const unsigned int rows, const unsigned int cols);
+template<typename T>
+void D_FillRand(T** arr2, const unsigned int rows, const unsigned int cols);
 
 void Print(int arr[], const unsigned int n);
-void Print2_0(int** arr2, const unsigned int rows, const unsigned int cols);
+template<typename T>
+void Print2_0(T** arr2, const unsigned int rows, const unsigned int cols);
 
 int* push_back(int arr[], int& n, int value);
-void push_row_back2_0(int**& arr2, int& rows, int& cols);
+template<typename T>
+void push_row_back2_0(T**& arr2, int& rows, int& cols);
 
 int* puch_front(int arr[], int& n, int value);
-void push_row_front2_0(int**& arr2, int& rows, int& cols);
+template<typename T>
+void push_row_front2_0(T**& arr2, int& rows, int& cols);
 
 int* insert(int arr[], int& n, int indif, int value);
-void insert_row2_0(int**& arr2, int& rows, int& cols, int index);
+template<typename T>
+void insert_row2_0(T**& arr2, int& rows, int& cols, int index);
 
 int* pop_back(int arr[], int& n);
-void pop_row_back2_0(int**& arr2, int& rows, int& cols);
+template<typename T>
+void pop_row_back2_0(T**& arr2, int& rows, int& cols);
 
 int* pop_front(int arr[], int& n);
-void pop_row_front2_0(int**& arr2, int& rows, int& cols);
+template<typename T>
+void pop_row_front2_0(T**& arr2, int& rows, int& cols);
 
 int* erase(int arr[], int& n, int indif);
-void erase_row2_0(int**& arr2, int& rows, int& cols, int index);
+template<typename T>
+void erase_row2_0(T**& arr2, int& rows, int& cols, int index);
 
-void clear(int**& arr2, int& rows, int& cols);
+template<typename T>
+void clear(T**& arr2, int& rows, int& cols);
 
 void main()
 {
 	setlocale(LC_ALL, "rus");
 #ifdef DYNAMIC_MEMORY_1
 	int n;
-	cout << "Введите размер массива: "; cin >> n;
+	cout << "Enter the size of the array:"; cin >> n;
 	int* arr = new int[n];
 	FillRand(arr, n);
 	Print(arr, n);
 	int value;
-	cout << "Введите дополнительное значение: "; cin >> value;
-	cout << "1)Вставка значения в конец: \t\t";
+	cout << "Enter additional value:"; cin >> value;
+	cout << "1)Insertion to the end: \t\t";
 	arr = puch_back(arr, n, value);
 	Print(arr, n);
-	cout << "2)Вставка значения в начало: \t\t";
+	cout << "2)Insertion to the beginning: \t\t";
 	arr = puch_front(arr, n, value);
 	Print(arr, n);
 	int indif;
-	cout << "Введите индификатор вставки: "; cin >> indif;
-	if (indif >= n)cout << "Индекс превышает размер массива!";
+	cout << "Enter Insert Indifier: "; cin >> indif;
+	if (indif >= n)cout << "Index exceeds the size of the array!";
 	else
 	{
-		cout << "3)Вставка значения по индификатору: \t";
+		cout << "3)Insertion values ​​for the Indicator: \t";
 		arr = insert(arr, n, indif, value);
 		Print(arr, n);
 	}
-	cout << "4)Удаление значения в конце: \t\t";
+	cout << "4)Deleting value at the end: \t\t";
 	arr = pop_back(arr, n);
 	Print(arr, n);
-	cout << "5)Удаление значения в начале: \t\t";
+	cout << "5)Delete value at the beginning: \t\t";
 	arr = pop_front(arr, n);
 	Print(arr, n);
-	cout << "Введите индефикатор удаления: "; cin >> indif;
-	if (indif >= n)cout << "Индекс превышает размер массива!";
+	cout << "Enter the deletion index: "; cin >> indif;
+	if (indif >= n)cout << "Index exceeds the size of the array!";
 	else
 	{
-		cout << "3)Удаление значения по индификатору : \t";
+		cout << "3)Deleting the value of the Indicator: \t";
 		arr = erase(arr, n, indif);
 		Print(arr, n);
 	}
-
 	delete[] arr;
 #endif // DYNAMIC_MEMORY_1
 
 #ifdef DYNAMIC_MEMORY_2
 	int rows = 0, cols = 0;
 	int value, index;
-	cout << "Введите количество строк: "; cin >> rows;
-	cout << "Введите количество столбцов: "; cin >> cols;
+	cout << "Enter the number of rows: "; cin >> rows;
+	cout << "Enter the number of columns: "; cin >> cols;
 	////////////////////
-	int** arr2 = allocate(rows, cols);
+	//int** arr2 = new int* [rows];
+	//double** arr2 = new double* [rows];
+	//float** arr2 = new float* [rows];
+	//short** arr2 = new short* [rows];
+	char** arr2 = new char* [rows];
+	/// ////////////////
+	allocate(arr2, rows, cols);
 	////////////////////
 	D_FillRand(arr2, rows, cols);
 	Print2_0(arr2, rows, cols);
-	cout << "Добавляет строку в конец массива" << endl;
+	cout << "Adds a string to the end of the array" << endl;
 	push_row_back2_0(arr2, rows, cols);
 	Print2_0(arr2, rows, cols);
-	cout << "Добавляет строку в начало массива" << endl;
+	cout << "Adds a string to the beginning of the array" << endl;
 	push_row_front2_0(arr2, rows, cols);
 	Print2_0(arr2, rows, cols);
-	cout << "Добавляет строку в массив по указанному индексу" << endl;
+	cout << "Adds a string to an array by specified index" << endl;
 	cout << "Введите индекс: "; cin >> index;
 	insert_row2_0(arr2, rows, cols, index);
 	Print2_0(arr2, rows, cols);
-	cout << "Удаляет строку с конца массива" << endl;
+	cout << "Removes the string from the end of the array" << endl;
 	pop_row_back2_0(arr2, rows, cols);
 	Print2_0(arr2, rows, cols);
-	cout << "Удаляет строку с начала массива" << endl;
+	cout << "Removes the string from the beginning of the array" << endl;
 	pop_row_front2_0(arr2, rows, cols);
 	Print2_0(arr2, rows, cols);
-	cout << "Удаляет строку из массива по указанному индексу" << endl;
-	cout << "Введите индекс: "; cin >> index;
+	cout << "Removes the row from the array at the specified index" << endl;
+	cout << "Enter the index: "; cin >> index;
 	erase_row2_0(arr2, rows, cols, index);
 	Print2_0(arr2, rows, cols);
 	////////////////////
@@ -114,11 +129,10 @@ void main()
 #endif // DYNAMIC_MEMORY_2
 }
 
-int** allocate(int& rows, int& cols)
+template<typename T>
+void allocate(T**& arr2, int& rows, int& cols)
 {
-	int** arr2 = new int* [rows];
-	for (int i = 0; i < rows; i++) arr2[i] = new int[cols] {};
-	return arr2;
+	for (int i = 0; i < rows; i++) arr2[i] = new T[cols] {};
 }
 
 void FillRand(int arr[], const unsigned int n)
@@ -129,13 +143,14 @@ void FillRand(int arr[], const unsigned int n)
 	}
 }
 
-void D_FillRand(int** arr2, const unsigned int rows, const unsigned int cols)
+template<typename T>
+void D_FillRand(T** arr2, const unsigned int rows, const unsigned int cols)
 {
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++)
 		{
-			arr2[i][j] = rand() % 100;
+			arr2[i][j] = rand() % 100/2.0;	//division at 2.0 exclusively for visualizing work with the types of Float and Double
 		}
 	}
 }
@@ -147,7 +162,8 @@ void Print(int arr[], const unsigned int n)
 		cout << arr[i] << "\t";
 	}cout << "|" << endl;
 }
-void Print2_0(int** arr2, const unsigned int rows, const unsigned int cols)
+template<typename T>
+void Print2_0(T** arr2, const unsigned int rows, const unsigned int cols)
 {
 	for (int i = 0; i < rows; i++)
 	{
@@ -168,15 +184,16 @@ int* push_back(int arr[], int& n, int value)
 	n++;
 	return arr;
 }
-void push_row_back2_0(int**& arr2, int& rows, int& cols)
+template<typename T>
+void push_row_back2_0(T**& arr2, int& rows, int& cols)
 {
-	int** buffer = new int* [rows+1];
+	T** buffer = new T* [rows+1];
 	for (int i = 0; i < rows; i++)
 	{
 		buffer[i] = arr2[i];
 	}
 	delete[] arr2;
-	buffer[rows] = new int[cols] {};
+	buffer[rows] = new T[cols] {};
 	arr2 = buffer;
 	++rows;
 }
@@ -194,15 +211,16 @@ int* puch_front(int arr[], int& n, int value)
 	n++;
 	return arr;
 }
-void push_row_front2_0(int**& arr2, int& rows, int& cols)
+template<typename T>
+void push_row_front2_0(T**& arr2, int& rows, int& cols)
 {
 	++rows;
-	int** buffer = new int* [rows];
+	T** buffer = new T* [rows];
 	for (int i = 0; i < rows-1; i++)
 	{
 		buffer[i+1] = arr2[i];
 	}
-	buffer[0] = new int[cols] {};
+	buffer[0] = new T[cols] {};
 	delete[] arr2;
 	arr2 = buffer;
 }
@@ -221,18 +239,19 @@ int* insert(int arr[], int& n, int indif, int value)
 	n++;
 	return arr;
 }
-void insert_row2_0(int**& arr2, int& rows, int& cols, int index)
+template<typename T>
+void insert_row2_0(T**& arr2, int& rows, int& cols, int index)
 {
-	if (index >= rows)cout << " Индекс больше массива! \n";
+	if (index >= rows)cout << " Index more than array! \n";
 	else
 	{
-		int** buffer = new int* [rows + 1];
+		T** buffer = new T* [rows + 1];
 		for (int i = 0; i < rows; i++)
 		{
 			if (i >= index)buffer[i + 1] = arr2[i];
 			else buffer[i] = arr2[i];
 		}
-		buffer[index] = new int[cols] {};
+		buffer[index] = new T[cols] {};
 		delete[] arr2;
 		arr2 = buffer;
 		rows++;
@@ -251,10 +270,11 @@ int* pop_back(int arr[], int& n)
 	arr = buffer;
 	return arr;
 }
-void pop_row_back2_0(int**& arr2, int& rows, int& cols)
+template<typename T>
+void pop_row_back2_0(T**& arr2, int& rows, int& cols)
 {
 	--rows;
-	int** buffer = new int* [rows];
+	T** buffer = new T* [rows];
 	for (int i = 0; i < rows; i++)
 	{
 		buffer[i] = arr2[i];
@@ -275,9 +295,10 @@ int* pop_front(int arr[], int& n)
 	n--;
 	return arr;
 }
-void pop_row_front2_0(int**& arr2, int& rows, int& cols)
+template<typename T>
+void pop_row_front2_0(T**& arr2, int& rows, int& cols)
 {
-	int** buffer = new int* [rows-1];
+	T** buffer = new T* [rows-1];
 	for (int i = 0; i < rows; i++)
 	{
 		buffer[i] = arr2[i + 1];
@@ -300,13 +321,14 @@ int* erase(int arr[], int& n, int indif)
 	n--;
 	return arr;
 }
-void erase_row2_0(int**& arr2, int& rows, int& cols, int index)
+template<typename T>
+void erase_row2_0(T**& arr2, int& rows, int& cols, int index)
 {
-	if (index >= rows)cout << " Индекс больше массива! \n";
+	if (index >= rows)cout << " Index more than array! \n";
 	else
 	{
 		--rows;
-		int** buffer = new int*[rows];
+		T** buffer = new T*[rows];
 		for (int i = 0; i < rows; i++)
 		{
 			if (i >= index)buffer[i] = arr2[i + 1];
@@ -317,7 +339,8 @@ void erase_row2_0(int**& arr2, int& rows, int& cols, int index)
 	}
 }
 
-void clear(int**& arr2, int& rows, int& cols)
+template<typename T>
+void clear(T**& arr2, int& rows, int& cols)
 {
 	for (int i = 0; i < rows; i++) delete[] arr2[i];
 	delete[] arr2;
