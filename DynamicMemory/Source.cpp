@@ -9,8 +9,8 @@ using std::endl;
 
 int** allocate(int& rows, int& cols);
 
-void FillRand(int arr[], const unsigned int n);
-void D_FillRand(int** arr2, const unsigned int rows, const unsigned int cols);
+void FillRand(int arr[], const unsigned int n, int minRand = 0, int maxRand = 100);
+void D_FillRand(int** arr2, const unsigned int rows, const unsigned int cols, int minRand = 0, int maxRand = 100);
 
 void Print(int arr[], const unsigned int n);
 void D_Print(int** arr2, const unsigned int rows, const unsigned int cols);
@@ -102,7 +102,7 @@ void main()
 	for (int i = 0; i < rows; i++) arr2[i] = new int[cols] {};*/
 	int** arr2 = allocate(rows, cols);
 	////////////////////
-	D_FillRand(arr2, rows, cols);
+	D_FillRand(arr2, rows, cols, 200, 300);
 	D_Print(arr2, rows, cols);
 	cout << "Добавление строк в конец: " << endl;
 	cout << "Введите значение: "; cin >> value;
@@ -184,20 +184,20 @@ int** allocate(int& rows, int& cols)
 }
 
 
-void FillRand(int arr[], const unsigned int n)
+void FillRand(int arr[], const unsigned int n, int minRand, int maxRand)
 {
 	for (int i = 0; i < n; i++)
 	{
-		arr[i] = rand() % 100;
+		arr[i] = rand() % (maxRand-minRand)+minRand;
 	}
 }
-void D_FillRand(int** arr2, const unsigned int rows, const unsigned int cols)
+void D_FillRand(int** arr2, const unsigned int rows, const unsigned int cols, int minRand, int maxRand)
 {
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++)
 		{
-			arr2[i][j] = rand() % 100;
+			arr2[i][j] = rand() % (maxRand - minRand) + minRand;
 		}
 	}
 }
