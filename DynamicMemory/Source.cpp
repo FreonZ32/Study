@@ -19,7 +19,7 @@ void Print2_0(int** arr2, const unsigned int rows, const unsigned int cols);
 int* push_back(int arr[], int& n, int value);
 void push_row_back(int**& arr2, int& rows, int& cols);
 void push_row_back2_0(int**& arr2, int& rows, int& cols);
-void D_push_back_cols(int**& arr2, int& rows, int& cols, int value);
+void D_push_back_cols(int** arr2, int& rows, int& cols, int value);
 
 int* puch_front(int arr[], int& n, int value);
 void push_row_front(int**& arr2, int& rows, int& cols);
@@ -99,42 +99,45 @@ void main()
 	////////////////////
 	D_FillRand(arr2, rows, cols);
 	D_Print(arr2, rows, cols);
-	//Print2_0(arr2, rows, cols);
-	cout << "Добавляет строку в конец массива" << endl;
-	push_row_back2_0(arr2, rows, cols);
-	//push_row_back(arr2, rows, cols);
+	cout << "Введите значение: "; cin >> value;
+	D_push_back_cols(arr2, rows, cols, value);
 	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Добавляет строку в начало массива" << endl;
-	push_row_front2_0(arr2, rows, cols);
-	//push_row_front(arr2, rows, cols);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Добавляет строку в массив по указанному индексу" << endl;
-	cout << "Введите индекс: "; cin >> index;
-	insert_row2_0(arr2, rows, cols, index);
-	//insert_row(arr2, rows, cols, index);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Удаляет строку с конца массива" << endl;
-	pop_row_back2_0(arr2, rows, cols);
-	//pop_row_back(arr2, rows, cols);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Удаляет строку с начала массива" << endl;
-	pop_row_front2_0(arr2, rows, cols);
-	//pop_row_front(arr2, rows, cols);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Удаляет строку из массива по указанному индексу" << endl;
-	cout << "Введите индекс: "; cin >> index;
-	erase_row2_0(arr2, rows, cols, index);
-	//erase_row(arr2, rows, cols, index);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	////////////////////
-	/*for (int i = 0; i < rows; i++) delete[] arr2[i];
-	delete[] arr2;*/
+	////Print2_0(arr2, rows, cols);
+	//cout << "Добавляет строку в конец массива" << endl;
+	//push_row_back2_0(arr2, rows, cols);
+	////push_row_back(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	system("PAUSE");
+	//cout << "Добавляет строку в начало массива" << endl;
+	//push_row_front2_0(arr2, rows, cols);
+	////push_row_front(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Добавляет строку в массив по указанному индексу" << endl;
+	//cout << "Введите индекс: "; cin >> index;
+	//insert_row2_0(arr2, rows, cols, index);
+	////insert_row(arr2, rows, cols, index);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Удаляет строку с конца массива" << endl;
+	//pop_row_back2_0(arr2, rows, cols);
+	////pop_row_back(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Удаляет строку с начала массива" << endl;
+	//pop_row_front2_0(arr2, rows, cols);
+	////pop_row_front(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Удаляет строку из массива по указанному индексу" << endl;
+	//cout << "Введите индекс: "; cin >> index;
+	//erase_row2_0(arr2, rows, cols, index);
+	////erase_row(arr2, rows, cols, index);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//////////////////////
+	///*for (int i = 0; i < rows; i++) delete[] arr2[i];
+	//delete[] arr2;*/
 	clear(arr2, rows, cols);
 #endif // DYNAMIC_MEMORY_2
 }
@@ -238,27 +241,19 @@ void push_row_back2_0(int**& arr2, int& rows, int& cols)
 	arr2 = buffer;
 	++rows;
 }
-void D_push_back_cols(int**& arr2, int& rows, int& cols, int value)
+void D_push_back_cols(int** arr2, int& rows, int& cols, int value)
 {
-	/*cols += value;
-	int** buffer = new int* [rows];
+	cols += value;
 	for (int i = 0; i < rows; i++)
 	{
-		buffer[i] = new int[cols]{};
-	}
-	for (int i = 0; i < rows; i++)
-	{
-		for (int j = 0; j < cols-value; j++)
+		int* buffer = new int[cols] {};
+		for (int j = 0; j < cols-value;j++)
 		{
-			buffer[i][j] = arr2[i][j];
+			buffer[j] = arr2[i][j];
 		}
-	}
-	for (int i = 0; i < rows; i++)
-	{
 		delete[] arr2[i];
+		arr2[i] = buffer;
 	}
-	delete[] arr2;
-	arr2 = buffer;*/
 }
 
 int* puch_front(int arr[], int& n, int value)
