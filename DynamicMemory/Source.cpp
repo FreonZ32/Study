@@ -24,22 +24,27 @@ void D_push_back_cols(int** arr2, int& rows, int& cols, int value);
 int* puch_front(int arr[], int& n, int value);
 void push_row_front(int**& arr2, int& rows, int& cols);
 void push_row_front2_0(int**& arr2, int& rows, int& cols);
+void D_push_cols_front(int** arr2, int& rows, int& cols, int value);
 
 int* insert(int arr[], int& n, int indif, int value);
 void insert_row(int**& arr2, int& rows, int& cols, int index);
 void insert_row2_0(int**& arr2, int& rows, int& cols, int index);
+void D_insert_cols(int** arr2, int& rows, int& cols, int index, int value);
 
 int* pop_back(int arr[], int& n);
 void pop_row_back(int**& arr2, int& rows, int& cols);
 void pop_row_back2_0(int**& arr2, int& rows, int& cols);
+void D_pop_cols_back(int** arr2, int& rows, int& cols, int value);
 
 int* pop_front(int arr[], int& n);
 void pop_row_front(int**& arr2, int& rows, int& cols);
 void pop_row_front2_0(int**& arr2, int& rows, int& cols);
+void D_pop_cols_front(int** arr2, int& rows, int& cols, int value);
 
 int* erase(int arr[], int& n, int indif);
 void erase_row(int**& arr2, int& rows, int& cols, int index);
 void erase_row2_0(int**& arr2, int& rows, int& cols, int index);
+void D_erase_cols(int** arr2, int& rows, int& cols, int index, int value);
 
 void clear(int**& arr2, int& rows, int& cols);
 
@@ -99,15 +104,44 @@ void main()
 	////////////////////
 	D_FillRand(arr2, rows, cols);
 	D_Print(arr2, rows, cols);
+	cout << "Добавление строк в конец: " << endl;
 	cout << "Введите значение: "; cin >> value;
 	D_push_back_cols(arr2, rows, cols, value);
 	D_Print(arr2, rows, cols);
+	//system("PAUSE");
+	cout << "Добавление строк в начало: " << endl;
+	cout << "Введите значение: "; cin >> value;
+	D_push_cols_front(arr2, rows, cols, value);
+	D_Print(arr2, rows, cols);
+	//system("PAUSE");
+	cout << "Добавление строк по индексу: " << endl;
+	cout << "Введите значение: "; cin >> value;
+	cout << "Введите индекс: "; cin >> index;
+	D_insert_cols(arr2, rows, cols, index, value);
+	D_Print(arr2, rows, cols);
+	//system("PAUSE");
+	cout << "Удаление строк в конце: " << endl;
+	cout << "Введите значение: "; cin >> value;
+	D_pop_cols_back(arr2, rows, cols, value);
+	D_Print(arr2, rows, cols);
+	//system("PAUSE");
+	cout << "Удаление строк в начале: " << endl;
+	cout << "Введите значение: "; cin >> value;
+	D_pop_cols_front(arr2, rows, cols, value);
+	D_Print(arr2, rows, cols);
+	//system("PAUSE");
+	cout << "Удаление строк по индексу: " << endl;
+	cout << "Введите значение: "; cin >> value;
+	cout << "Введите индекс: "; cin >> index;
+	D_erase_cols(arr2, rows, cols, index, value);
+	D_Print(arr2, rows, cols);
+	//system("PAUSE");
 	////Print2_0(arr2, rows, cols);
 	//cout << "Добавляет строку в конец массива" << endl;
 	//push_row_back2_0(arr2, rows, cols);
 	////push_row_back(arr2, rows, cols);
 	//D_Print(arr2, rows, cols);
-	system("PAUSE");
+	////system("PAUSE");
 	//cout << "Добавляет строку в начало массива" << endl;
 	//push_row_front2_0(arr2, rows, cols);
 	////push_row_front(arr2, rows, cols);
@@ -303,6 +337,20 @@ void push_row_front2_0(int**& arr2, int& rows, int& cols)
 	delete[] arr2;
 	arr2 = buffer;
 }
+void D_push_cols_front(int** arr2, int& rows, int& cols,int value)
+{
+	cols += value;
+	for (int i = 0; i < rows; i++)
+	{
+		int* buffer = new int[cols] {};
+		for (int j = 0; j < cols; j++)
+		{
+			buffer[j+value] = arr2[i][j];
+		}
+		delete[] arr2[i];
+		arr2[i] = buffer;
+	}
+}
 
 int* insert(int arr[], int& n, int indif, int value)
 {
@@ -362,6 +410,25 @@ void insert_row2_0(int**& arr2, int& rows, int& cols, int index)
 		rows++;
 	}
 }
+void D_insert_cols(int** arr2, int& rows, int& cols, int index, int value)
+{
+	if (index >= cols)cout << " Индекс больше массива! \n";
+	else
+	{
+		cols += value;
+		for (int i = 0; i < rows; i++)
+		{
+			int* buffer = new int[cols] {};
+			for (int j = 0; j < cols - value; j++)
+			{
+				if (j >= index)buffer[j + value] = arr2[i][j];
+				else buffer[j] = arr2[i][j];
+			}
+			delete[] arr2[i];
+			arr2[i] = buffer;
+		}
+	}
+}
 
 int* pop_back(int arr[], int& n)
 {
@@ -408,6 +475,20 @@ void pop_row_back2_0(int**& arr2, int& rows, int& cols)
 	delete[] arr2;
 	arr2 = buffer;
 }
+void D_pop_cols_back(int** arr2, int& rows, int& cols, int value)
+{
+	cols -= value;
+	for (int i = 0; i < rows; i++)
+	{
+		int* buffer = new int[cols] {};
+		for (int j = 0; j < cols; j++)
+		{
+			buffer[j] = arr2[i][j];
+		}
+		delete[] arr2[i];
+		arr2[i] = buffer;
+	}
+}
 
 int* pop_front(int arr[], int& n)
 {
@@ -453,6 +534,20 @@ void pop_row_front2_0(int**& arr2, int& rows, int& cols)
 	delete[] arr2;
 	arr2 = buffer;
 	rows--;
+}
+void D_pop_cols_front(int** arr2, int& rows, int& cols, int value)
+{
+	cols -= value;
+	for (int i = 0; i < rows; i++)
+	{
+		int* buffer = new int[cols] {};
+		for (int j = 0; j < cols; j++)
+		{
+			buffer[j] = arr2[i][j+value];
+		}
+		delete[] arr2[i];
+		arr2[i] = buffer;
+	}
 }
 
 int* erase(int arr[], int& n, int indif)
@@ -509,6 +604,25 @@ void erase_row2_0(int**& arr2, int& rows, int& cols, int index)
 		}
 		delete[] arr2;
 		arr2 = buffer;
+	}
+}
+void D_erase_cols(int** arr2, int& rows, int& cols, int index, int value)
+{
+	if (index >= cols)cout << " Индекс больше массива! \n";
+	else
+	{
+		cols -= value;
+		for (int i = 0; i < rows; i++)
+		{
+			int* buffer = new int[cols] {};
+			for (int j = 0; j < cols; j++)
+			{
+				if (j >= index)buffer[j] = arr2[i][j + value];
+				else buffer[j] = arr2[i][j];
+			}
+			delete[] arr2[i];
+			arr2[i] = buffer;
+		}
 	}
 }
 
