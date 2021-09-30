@@ -23,21 +23,21 @@ template<typename T>
 void Print2_0(T** arr2, const unsigned int rows, const unsigned int cols);
 
 template<typename T>
-T* push_back(T arr[], int& n, int value = 0);
+T* push_back(T arr[], int& n, T value = 0);
 template<typename T>
 void push_row_back2_0(T**& arr2, int& rows, int& cols);
 template<typename T>
 void D_push_back_cols(T** arr2, int& rows, int& cols, int value);
 
 template<typename T>
-T* push_front(T arr[], int& n, int value = 0);
+T* push_front(T arr[], int& n, T value = 0);
 template<typename T>
 void push_row_front2_0(T**& arr2, int& rows, int& cols);
 template<typename T>
 void D_push_cols_front(T** arr2, int& rows, int& cols, int value);
 
 template<typename T>
-T* insert(T arr[], int& n, int indif, int value = 0);
+T* insert(T arr[], int& n, int indif, T value = 0);
 template<typename T>
 void insert_row2_0(T**& arr2, int& rows, int& cols, int index);
 template<typename T>
@@ -71,14 +71,15 @@ void main()
 {
 	setlocale(LC_ALL, "rus");
 #ifdef DYNAMIC_MEMORY_1
-	int n, value, indif;
+	int n, indif;
+	int value;
 	cout << "Введите размер массива: "; cin >> n;
 	
 	//int* arr = new int[n];
 	//double* arr = new double[n];
-	float* arr = new float[n];
+	//float* arr = new float[n];
 	//short* arr = new short[n];
-	//char* arr = new char[n];
+	char* arr = new char[n];
 
 	FillRand(arr, n);
 	cout << "Исходный массив: \t\t\t";
@@ -109,8 +110,8 @@ void main()
 #endif // DYNAMIC_MEMORY_1
 
 #ifdef DYNAMIC_MEMORY_2
-	int rows = 0, cols = 0;
-	int value, index;
+	int rows = 0, cols = 0,	index;
+	int value;
 	cout << "Введите количество строк: "; cin >> rows;
 	cout << "Введите количество столбцов: "; cin >> cols;
 	
@@ -124,66 +125,66 @@ void main()
 
 	D_FillRand(arr2, rows, cols);
 	D_Print(arr2, rows, cols);
-	cout << "Добавление строк в конец: " << endl;
-	cout << "Введите значение: "; cin >> value;
-	D_push_back_cols(arr2, rows, cols, value);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Добавление строк в начало: " << endl;
-	cout << "Введите значение: "; cin >> value;
-	D_push_cols_front(arr2, rows, cols, value);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Добавление строк по индексу: " << endl;
-	cout << "Введите значение: "; cin >> value;
-	cout << "Введите индекс: "; cin >> index;
-	D_insert_cols(arr2, rows, cols, index, value);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Удаление строк в конце: " << endl;
-	cout << "Введите значение: "; cin >> value;
-	D_pop_cols_back(arr2, rows, cols, value);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Удаление строк в начале: " << endl;
-	cout << "Введите значение: "; cin >> value;
-	D_pop_cols_front(arr2, rows, cols, value);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Удаление строк по индексу: " << endl;
-	cout << "Введите значение: "; cin >> value;
-	cout << "Введите индекс: "; cin >> index;
-	D_erase_cols(arr2, rows, cols, index, value);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
+	//cout << "Добавление колонок в конец: " << endl;
+	//cout << "Введите значение: "; cin >> value;
+	//D_push_back_cols(arr2, rows, cols, value);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Добавление колонок в начало: " << endl;
+	//cout << "Введите значение: "; cin >> value;
+	//D_push_cols_front(arr2, rows, cols, value);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Добавление колонок по индексу: " << endl;
+	//cout << "Введите значение: "; cin >> value;
+	//cout << "Введите индекс: "; cin >> index;
+	//D_insert_cols(arr2, rows, cols, index, value);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Удаление колонок в конце: " << endl;
+	//cout << "Введите значение: "; cin >> value;
+	//D_pop_cols_back(arr2, rows, cols, value);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Удаление колонок в начале: " << endl;
+	//cout << "Введите значение: "; cin >> value;
+	//D_pop_cols_front(arr2, rows, cols, value);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Удаление колонок по индексу: " << endl;
+	//cout << "Введите значение: "; cin >> value;
+	//cout << "Введите индекс: "; cin >> index;
+	//D_erase_cols(arr2, rows, cols, index, value);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
 
 
-	//cout << "Добавляет строку в конец массива" << endl;
-	//push_row_back2_0(arr2, rows, cols);
-	//D_Print(arr2, rows, cols);
-	////system("PAUSE");
-	//cout << "Добавляет строку в начало массива" << endl;
-	//push_row_front2_0(arr2, rows, cols);
-	//D_Print(arr2, rows, cols);
-	////system("PAUSE");
-	//cout << "Добавляет строку в массив по указанному индексу" << endl;
-	//cout << "Введите индекс: "; cin >> index;
-	//insert_row2_0(arr2, rows, cols, index);
-	//D_Print(arr2, rows, cols);
-	////system("PAUSE");
-	//cout << "Удаляет строку с конца массива" << endl;
-	//pop_row_back2_0(arr2, rows, cols);
-	//D_Print(arr2, rows, cols);
-	////system("PAUSE");
-	//cout << "Удаляет строку с начала массива" << endl;
-	//pop_row_front2_0(arr2, rows, cols);
-	//D_Print(arr2, rows, cols);
-	////system("PAUSE");
-	//cout << "Удаляет строку из массива по указанному индексу" << endl;
-	//cout << "Введите индекс: "; cin >> index;
-	//erase_row2_0(arr2, rows, cols, index);
-	//D_Print(arr2, rows, cols);
-	////system("PAUSE");
+	cout << "Добавляет строку в конец массива" << endl;
+	push_row_back2_0(arr2, rows, cols);
+	D_Print(arr2, rows, cols);
+	//system("PAUSE");
+	cout << "Добавляет строку в начало массива" << endl;
+	push_row_front2_0(arr2, rows, cols);
+	D_Print(arr2, rows, cols);
+	//system("PAUSE");
+	cout << "Добавляет строку в массив по указанному индексу" << endl;
+	cout << "Введите индекс: "; cin >> index;
+	insert_row2_0(arr2, rows, cols, index);
+	D_Print(arr2, rows, cols);
+	//system("PAUSE");
+	cout << "Удаляет строку с конца массива" << endl;
+	pop_row_back2_0(arr2, rows, cols);
+	D_Print(arr2, rows, cols);
+	//system("PAUSE");
+	cout << "Удаляет строку с начала массива" << endl;
+	pop_row_front2_0(arr2, rows, cols);
+	D_Print(arr2, rows, cols);
+	//system("PAUSE");
+	cout << "Удаляет строку из массива по указанному индексу" << endl;
+	cout << "Введите индекс: "; cin >> index;
+	erase_row2_0(arr2, rows, cols, index);
+	D_Print(arr2, rows, cols);
+	//system("PAUSE");
 	
 	clear(arr2, rows, cols);
 #endif // DYNAMIC_MEMORY_2
@@ -248,9 +249,9 @@ void Print2_0(T** arr2, const unsigned int rows, const unsigned int cols)
 }
 
 template<typename T>
-T* push_back(T arr[], int& n, int value)
+T* push_back(T arr[], int& n, T value)
 {
-	T* buffer = new T[n + 1];
+	T* buffer = new T[n + 1]{};
 	for (int i = 0; i < n; i++) buffer[i] = arr[i];
 	delete[] arr;
 	arr = buffer;
@@ -261,15 +262,8 @@ T* push_back(T arr[], int& n, int value)
 template<typename T>
 void push_row_back2_0(T**& arr2, int& rows, int& cols)
 {
-	T** buffer = new T* [rows+1];
-	for (int i = 0; i < rows; i++)
-	{
-		buffer[i] = arr2[i];
-	}
-	delete[] arr2;
-	buffer[rows] = new T[cols] {};
-	arr2 = buffer;
-	++rows;
+	T* buffer = new T[cols]{};
+	arr2 = push_back(arr2, rows, buffer);
 }
 template<typename T>
 void D_push_back_cols(T** arr2, int& rows, int& cols, int value)
@@ -282,9 +276,9 @@ void D_push_back_cols(T** arr2, int& rows, int& cols, int value)
 }
 
 template<typename T>
-T* push_front(T arr[], int& n, int value)
+T* push_front(T arr[], int& n, T value)
 {
-	T* buffer = new T[n + 1];
+	T* buffer = new T[n + 1]{};
 	for (int i = 0; i < n; i++)
 	{
 		buffer[i + 1] = arr[i];
@@ -298,15 +292,9 @@ T* push_front(T arr[], int& n, int value)
 template<typename T>
 void push_row_front2_0(T**& arr2, int& rows, int& cols)
 {
-	++rows;
-	T** buffer = new T* [rows];
-	for (int i = 0; i < rows-1; i++)
-	{
-		buffer[i+1] = arr2[i];
-	}
-	buffer[0] = new T[cols] {};
-	delete[] arr2;
-	arr2 = buffer;
+	T* buffer = new T[cols]{};
+	arr2 = push_front(arr2, rows, buffer);
+	
 }
 template<typename T>
 void D_push_cols_front(T** arr2, int& rows, int& cols,int value)
@@ -319,12 +307,12 @@ void D_push_cols_front(T** arr2, int& rows, int& cols,int value)
 }
 
 template<typename T>
-T* insert(T arr[], int& n, int indif, int value)
+T* insert(T arr[], int& n, int indif, T value)
 {
 	if (indif >= n) { cout << "Индекс превышает размер массива!\t"; return arr; }
 	else
 	{
-		T* buffer = new T[n + 1];
+		T* buffer = new T[n + 1]{};
 		for (int i = 0, k = 0; i < n; i++, k++)
 		{
 			if (i == indif)k++;
@@ -340,20 +328,8 @@ T* insert(T arr[], int& n, int indif, int value)
 template<typename T>
 void insert_row2_0(T**& arr2, int& rows, int& cols, int index)
 {
-	if (index >= rows)cout << " Индекс больше массива! \n";
-	else
-	{
-		T** buffer = new T* [rows + 1];
-		for (int i = 0; i < rows; i++)
-		{
-			if (i >= index)buffer[i + 1] = arr2[i];
-			else buffer[i] = arr2[i];
-		}
-		buffer[index] = new T[cols] {};
-		delete[] arr2;
-		arr2 = buffer;
-		rows++;
-	}
+	T* buffer = new T[cols]{};
+	arr2 = insert(arr2, rows, index, buffer);
 }
 template<typename T>
 void D_insert_cols(T** arr2, int& rows, int& cols, int index, int value)
@@ -375,7 +351,7 @@ template<typename T>
 T* pop_back(T arr[], int& n)
 {
 	n--;
-	T* buffer = new T[n];
+	T* buffer = new T[n]{};
 	for (int i = 0; i < n; i++)
 	{
 		buffer[i] = arr[i];
@@ -387,14 +363,7 @@ T* pop_back(T arr[], int& n)
 template<typename T>
 void pop_row_back2_0(T**& arr2, int& rows, int& cols)
 {
-	--rows;
-	T** buffer = new T* [rows];
-	for (int i = 0; i < rows; i++)
-	{
-		buffer[i] = arr2[i];
-	}
-	delete[] arr2;
-	arr2 = buffer;
+	arr2 = pop_back(arr2, rows);
 }
 template<typename T>
 void D_pop_cols_back(T** arr2, int& rows, int& cols, int value)
@@ -409,7 +378,7 @@ void D_pop_cols_back(T** arr2, int& rows, int& cols, int value)
 template<typename T>
 T* pop_front(T arr[], int& n)
 {
-	T* buffer = new T[n - 1];
+	T* buffer = new T[n - 1]{};
 	for (int i = 0; i < n - 1; i++)
 	{
 		buffer[i] = arr[i + 1];
@@ -422,14 +391,7 @@ T* pop_front(T arr[], int& n)
 template<typename T>
 void pop_row_front2_0(T**& arr2, int& rows, int& cols)
 {
-	T** buffer = new T* [rows-1];
-	for (int i = 0; i < rows; i++)
-	{
-		buffer[i] = arr2[i + 1];
-	}
-	delete[] arr2;
-	arr2 = buffer;
-	rows--;
+	arr2 = pop_front(arr2, rows);
 }
 template<typename T>
 void D_pop_cols_front(T** arr2, int& rows, int& cols, int value)
@@ -447,7 +409,7 @@ T* erase(T arr[], int& n, int indif)
 	if (indif >= n) { cout << "Индекс превышает размер массива!\t"; return arr; }
 	else
 	{
-		T* buffer = new T[n - 1];
+		T* buffer = new T[n - 1]{};
 		for (int i = 0, k = 0; i < n; i++)
 		{
 			if (i == indif)k++;
@@ -462,19 +424,7 @@ T* erase(T arr[], int& n, int indif)
 template<typename T>
 void erase_row2_0(T**& arr2, int& rows, int& cols, int index)
 {
-	if (index >= rows)cout << " Индекс больше массива! \n";
-	else
-	{
-		--rows;
-		T** buffer = new T*[rows];
-		for (int i = 0; i < rows; i++)
-		{
-			if (i >= index)buffer[i] = arr2[i + 1];
-			else buffer[i] = arr2[i];
-		}
-		delete[] arr2;
-		arr2 = buffer;
-	}
+	arr2 = erase(arr2, rows, index);
 }
 template<typename T>
 void D_erase_cols(T** arr2, int& rows, int& cols, int index, int value)
