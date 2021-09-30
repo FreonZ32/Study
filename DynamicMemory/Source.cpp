@@ -7,8 +7,8 @@
 #include"PopBackAndFront.h"
 #include"Clear.h"
 
-#define DYNAMIC_MEMORY_1
-//#define DYNAMIC_MEMORY_2
+//#define DYNAMIC_MEMORY_1
+#define DYNAMIC_MEMORY_2
 
 void main()
 {
@@ -65,7 +65,7 @@ void main()
 
 	allocate(arr2, rows, cols);
 
-	D_FillRand(arr2, rows, cols, 200, 300);
+	D_FillRand(arr2, rows, cols);
 	D_Print(arr2, rows, cols);
 	cout << "Добавление строк в конец: " << endl;
 	cout << "Введите значение: "; cin >> value;
@@ -101,32 +101,32 @@ void main()
 	//system("PAUSE");
 
 
-	cout << "Добавляет строку в конец массива" << endl;
-	push_row_back2_0(arr2, rows, cols);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Добавляет строку в начало массива" << endl;
-	push_row_front2_0(arr2, rows, cols);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Добавляет строку в массив по указанному индексу" << endl;
-	cout << "Введите индекс: "; cin >> index;
-	insert_row2_0(arr2, rows, cols, index);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Удаляет строку с конца массива" << endl;
-	pop_row_back2_0(arr2, rows, cols);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Удаляет строку с начала массива" << endl;
-	pop_row_front2_0(arr2, rows, cols);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Удаляет строку из массива по указанному индексу" << endl;
-	cout << "Введите индекс: "; cin >> index;
-	erase_row2_0(arr2, rows, cols, index);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
+	//cout << "Добавляет строку в конец массива" << endl;
+	//push_row_back2_0(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Добавляет строку в начало массива" << endl;
+	//push_row_front2_0(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Добавляет строку в массив по указанному индексу" << endl;
+	//cout << "Введите индекс: "; cin >> index;
+	//insert_row2_0(arr2, rows, cols, index);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Удаляет строку с конца массива" << endl;
+	//pop_row_back2_0(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Удаляет строку с начала массива" << endl;
+	//pop_row_front2_0(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Удаляет строку из массива по указанному индексу" << endl;
+	//cout << "Введите индекс: "; cin >> index;
+	//erase_row2_0(arr2, rows, cols, index);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
 	
 	clear(arr2, rows, cols);
 #endif // DYNAMIC_MEMORY_2
