@@ -23,21 +23,21 @@ template<typename T>
 void Print2_0(T** arr2, const unsigned int rows, const unsigned int cols);
 
 template<typename T>
-T* push_back(T arr[], int& n, int value);
+T* push_back(T arr[], int& n, int value = 0);
 template<typename T>
 void push_row_back2_0(T**& arr2, int& rows, int& cols);
 template<typename T>
 void D_push_back_cols(T** arr2, int& rows, int& cols, int value);
 
 template<typename T>
-T* push_front(T arr[], int& n, int value);
+T* push_front(T arr[], int& n, int value = 0);
 template<typename T>
 void push_row_front2_0(T**& arr2, int& rows, int& cols);
 template<typename T>
 void D_push_cols_front(T** arr2, int& rows, int& cols, int value);
 
 template<typename T>
-T* insert(T arr[], int& n, int indif, int value);
+T* insert(T arr[], int& n, int indif, int value = 0);
 template<typename T>
 void insert_row2_0(T**& arr2, int& rows, int& cols, int index);
 template<typename T>
@@ -158,32 +158,32 @@ void main()
 	//system("PAUSE");
 
 
-	cout << "Добавляет строку в конец массива" << endl;
-	push_row_back2_0(arr2, rows, cols);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Добавляет строку в начало массива" << endl;
-	push_row_front2_0(arr2, rows, cols);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Добавляет строку в массив по указанному индексу" << endl;
-	cout << "Введите индекс: "; cin >> index;
-	insert_row2_0(arr2, rows, cols, index);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Удаляет строку с конца массива" << endl;
-	pop_row_back2_0(arr2, rows, cols);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Удаляет строку с начала массива" << endl;
-	pop_row_front2_0(arr2, rows, cols);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
-	cout << "Удаляет строку из массива по указанному индексу" << endl;
-	cout << "Введите индекс: "; cin >> index;
-	erase_row2_0(arr2, rows, cols, index);
-	D_Print(arr2, rows, cols);
-	//system("PAUSE");
+	//cout << "Добавляет строку в конец массива" << endl;
+	//push_row_back2_0(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Добавляет строку в начало массива" << endl;
+	//push_row_front2_0(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Добавляет строку в массив по указанному индексу" << endl;
+	//cout << "Введите индекс: "; cin >> index;
+	//insert_row2_0(arr2, rows, cols, index);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Удаляет строку с конца массива" << endl;
+	//pop_row_back2_0(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Удаляет строку с начала массива" << endl;
+	//pop_row_front2_0(arr2, rows, cols);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
+	//cout << "Удаляет строку из массива по указанному индексу" << endl;
+	//cout << "Введите индекс: "; cin >> index;
+	//erase_row2_0(arr2, rows, cols, index);
+	//D_Print(arr2, rows, cols);
+	////system("PAUSE");
 	
 	clear(arr2, rows, cols);
 #endif // DYNAMIC_MEMORY_2
@@ -200,7 +200,7 @@ void FillRand(T arr[], const unsigned int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		arr[i] = rand() % 100/2.0;
+		arr[i] = rand() % 100;
 	}
 }
 template<typename T>
@@ -210,7 +210,7 @@ void D_FillRand(T** arr2, const unsigned int rows, const unsigned int cols)
 	{
 		for (int j = 0; j < cols; j++)
 		{
-			arr2[i][j] = rand() % 100/2.0;
+			arr2[i][j] = rand() % 100;
 		}
 	}
 }
@@ -274,17 +274,11 @@ void push_row_back2_0(T**& arr2, int& rows, int& cols)
 template<typename T>
 void D_push_back_cols(T** arr2, int& rows, int& cols, int value)
 {
-	cols += value;
-	for (int i = 0; i < rows; i++)
-	{
-		T* buffer = new T[cols] {};
-		for (int j = 0; j < cols-value;j++)
+		for (int i = 0; i < rows; i++)
 		{
-			buffer[j] = arr2[i][j];
-		}
-		delete[] arr2[i];
-		arr2[i] = buffer;
-	}
+			for (int j = 0; j < value; j++) arr2[i] = push_back(arr2[i], cols);
+			cols -= value;
+		}cols += value;
 }
 
 template<typename T>
@@ -317,17 +311,11 @@ void push_row_front2_0(T**& arr2, int& rows, int& cols)
 template<typename T>
 void D_push_cols_front(T** arr2, int& rows, int& cols,int value)
 {
-	cols += value;
 	for (int i = 0; i < rows; i++)
 	{
-		T* buffer = new T[cols] {};
-		for (int j = 0; j < cols; j++)
-		{
-			buffer[j+value] = arr2[i][j];
-		}
-		delete[] arr2[i];
-		arr2[i] = buffer;
-	}
+		for (int j = 0; j < value; j++)arr2[i] = push_front(arr2[i], cols);
+		cols -= value;
+	}cols += value;
 }
 
 template<typename T>
@@ -373,18 +361,13 @@ void D_insert_cols(T** arr2, int& rows, int& cols, int index, int value)
 	if (index >= cols)cout << " Индекс больше массива! \n";
 	else
 	{
-		cols += value;
 		for (int i = 0; i < rows; i++)
 		{
-			T* buffer = new T[cols] {};
-			for (int j = 0; j < cols - value; j++)
+			for (int j = 0; j < value; j++)
 			{
-				if (j >= index)buffer[j + value] = arr2[i][j];
-				else buffer[j] = arr2[i][j];
-			}
-			delete[] arr2[i];
-			arr2[i] = buffer;
-		}
+				arr2[i] = insert(arr2[i], cols, index + j);
+			}cols -= value;
+		}cols += value;
 	}
 }
 
@@ -416,17 +399,11 @@ void pop_row_back2_0(T**& arr2, int& rows, int& cols)
 template<typename T>
 void D_pop_cols_back(T** arr2, int& rows, int& cols, int value)
 {
-	cols -= value;
 	for (int i = 0; i < rows; i++)
 	{
-		T* buffer = new T[cols] {};
-		for (int j = 0; j < cols; j++)
-		{
-			buffer[j] = arr2[i][j];
-		}
-		delete[] arr2[i];
-		arr2[i] = buffer;
-	}
+		for (int j = 0; j < value; j++) arr2[i] = pop_back(arr2[i], cols);
+		cols += value;
+	}cols -= value;
 }
 
 template<typename T>
@@ -457,17 +434,11 @@ void pop_row_front2_0(T**& arr2, int& rows, int& cols)
 template<typename T>
 void D_pop_cols_front(T** arr2, int& rows, int& cols, int value)
 {
-	cols -= value;
 	for (int i = 0; i < rows; i++)
 	{
-		T* buffer = new T[cols] {};
-		for (int j = 0; j < cols; j++)
-		{
-			buffer[j] = arr2[i][j+value];
-		}
-		delete[] arr2[i];
-		arr2[i] = buffer;
-	}
+		for (int j = 0; j < value; j++) arr2[i] = pop_front(arr2[i], cols);
+		cols += value;
+	}cols -= value;
 }
 
 template<typename T>
@@ -511,18 +482,13 @@ void D_erase_cols(T** arr2, int& rows, int& cols, int index, int value)
 	if (index >= cols)cout << " Индекс больше массива! \n";
 	else
 	{
-		cols -= value;
 		for (int i = 0; i < rows; i++)
 		{
-			T* buffer = new T[cols] {};
-			for (int j = 0; j < cols; j++)
+			for (int j = 0; j < value; j++)
 			{
-				if (j >= index)buffer[j] = arr2[i][j + value];
-				else buffer[j] = arr2[i][j];
-			}
-			delete[] arr2[i];
-			arr2[i] = buffer;
-		}
+				arr2[i] = erase(arr2[i], cols, index);
+			}cols += value;
+		}cols -= value;
 	}
 }
 
