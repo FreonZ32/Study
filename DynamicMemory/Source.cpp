@@ -8,7 +8,7 @@ using std::endl;
 #define DYNAMIC_MEMORY_2
 
 template<typename T>
-void allocate(T**& arr2, int& rows, int& cols);
+T** allocate(int& rows, int& cols);
 
 template<typename T>
 void FillRand(T arr[], const unsigned int n);
@@ -115,13 +115,12 @@ void main()
 	cout << "Введите количество строк: "; cin >> rows;
 	cout << "Введите количество столбцов: "; cin >> cols;
 	
-	int** arr2 = new int* [rows];
-	//double** arr2 = new double* [rows];
-	//float** arr2 = new float* [rows];
-	//short** arr2 = new short* [rows];
-	//char** arr2 = new char* [rows];
+	//int** arr2 = allocate<int>(rows, cols);
+	//double** arr2 = allocate<double>(rows, cols);
+	//float** arr2 = allocate<float>(rows, cols);
+	//short** arr2 = allocate<short>(rows, cols);
+	char** arr2 = allocate<char>(rows, cols);
 
-	allocate(arr2, rows, cols);
 
 	D_FillRand(arr2, rows, cols);
 	D_Print(arr2, rows, cols);
@@ -191,9 +190,11 @@ void main()
 }
 
 template<typename T>
-void allocate(T**& arr2, int& rows, int& cols)
+T** allocate(int& rows, int& cols)
 {
+	T** arr2 = new T* [rows];
 	for (int i = 0; i < rows; i++) arr2[i] = new T[cols]{};
+	return arr2;
 }
 
 template<typename T>
