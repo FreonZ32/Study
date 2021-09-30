@@ -139,7 +139,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AllocateAndFillrand.cpp" />
+    <ClCompile Include="Clear.cpp" />
+    <ClCompile Include="InsertAndErase.cpp" />
+    <ClCompile Include="PopBackAndFront.cpp" />
+    <ClCompile Include="Print.cpp" />
+    <ClCompile Include="PushBackAndFront.cpp" />
     <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AllocateAndFillrand.h" />
+    <ClInclude Include="Clear.h" />
+    <ClInclude Include="InsertAndErase.h" />
+    <ClInclude Include="PopBackAndFront.h" />
+    <ClInclude Include="Print.h" />
+    <ClInclude Include="PushBackAndFront.h" />
+    <ClInclude Include="Stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
