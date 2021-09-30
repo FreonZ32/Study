@@ -4,8 +4,8 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-#define DYNAMIC_MEMORY_1
-//#define DYNAMIC_MEMORY_2
+//#define DYNAMIC_MEMORY_1
+#define DYNAMIC_MEMORY_2
 
 template<typename T>
 void allocate(T**& arr2, int& rows, int& cols);
@@ -122,7 +122,7 @@ void main()
 
 	allocate(arr2, rows, cols);
 
-	D_FillRand(arr2, rows, cols, 200, 300);
+	D_FillRand(arr2, rows, cols);
 	D_Print(arr2, rows, cols);
 	cout << "Добавление строк в конец: " << endl;
 	cout << "Введите значение: "; cin >> value;
