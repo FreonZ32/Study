@@ -1,11 +1,17 @@
 ﻿#include"Stdafx.h"
 
 #include"AllocateAndFillrand.h"
+#include"AllocateAndFillrand.cpp"
 #include"Print.h"
+#include"Print.cpp"
 #include"PushBackAndFront.h"
+#include"PushBackAndFront.cpp"
 #include"InsertAndErase.h"
+#include"InsertAndErase.cpp"
 #include"PopBackAndFront.h"
+#include"PopBackAndFront.cpp"
 #include"Clear.h"
+#include"Clear.cpp"
 
 //#define DYNAMIC_MEMORY_1
 #define DYNAMIC_MEMORY_2
