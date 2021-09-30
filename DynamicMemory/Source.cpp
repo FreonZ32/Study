@@ -84,7 +84,7 @@ void main()
 	FillRand(arr, n);
 	cout << "Исходный массив: \t\t\t";
 	Print(arr, n);
-	cout << "Введите дополнительное значение: "; cin >> value;
+	cout << "Введите дополнительное значение: "; cin >> value; 
 	cout << "1)Вставка значения в конец: \t\t";
 	arr = push_back(arr, n, value);
 	Print(arr, n);
@@ -292,8 +292,9 @@ T* push_front(T arr[], int& n, T value)
 template<typename T>
 void push_row_front2_0(T**& arr2, int& rows, int& cols)
 {
-	T* buffer = new T[cols]{};
-	arr2 = push_front(arr2, rows, buffer);
+	//T* buffer = new T[cols]{};
+	//arr2 = push_front(arr2, rows, buffer);
+	arr2 = push_front(arr2, rows, new T[cols]{});
 	
 }
 template<typename T>
@@ -363,6 +364,7 @@ T* pop_back(T arr[], int& n)
 template<typename T>
 void pop_row_back2_0(T**& arr2, int& rows, int& cols)
 {
+	delete[] arr2[rows-1];
 	arr2 = pop_back(arr2, rows);
 }
 template<typename T>
@@ -391,6 +393,7 @@ T* pop_front(T arr[], int& n)
 template<typename T>
 void pop_row_front2_0(T**& arr2, int& rows, int& cols)
 {
+	delete[] arr2[0];
 	arr2 = pop_front(arr2, rows);
 }
 template<typename T>
@@ -424,6 +427,7 @@ T* erase(T arr[], int& n, int indif)
 template<typename T>
 void erase_row2_0(T**& arr2, int& rows, int& cols, int index)
 {
+	delete[] arr2[index];
 	arr2 = erase(arr2, rows, index);
 }
 template<typename T>
