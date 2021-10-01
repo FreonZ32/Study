@@ -11,7 +11,7 @@ int** Creating(int height, int length, int& playerpoint, int& playerpointy);
 void Clear(int** arr, int height);
 
 void Drawing(int**& arr);
-void Check(int** arr);
+void Check(int** arr, bool& Escape);
 void Output(int** arr, int& playerpointx, int& playerpointy, bool& Escape);
 void Up(int** arr, int& playerpointx, int& playerpointy);
 void Down(int** arr, int& playerpointx, int& playerpointy);
@@ -27,6 +27,7 @@ void main()
 	bool Escape = false;
 	do
 	{
+		cout << " Use kesy 'w','a','s','d' to move.\n Key 'n' will create new game.\n Press ESC to stop game.\n\n\n";
 		Drawing(arr);
 		cout << "\nPlayer position: " << playerpointx << " " << playerpointy;
 		Output(arr,playerpointx,playerpointy,Escape);
@@ -78,14 +79,17 @@ void Drawing(int**& arr)
 
 void Check(int** arr, bool& Escape)
 {
+	int s = 0;
 	for (int i = 0; i < height*length; i++)
 	{
-	 if(arr[i/length][i%length] == i)
-	 {
-		 Escape = true;
-		 for (int i = 0; i < 1000; i++) cout << "Congratulations!";
-	 }
+		if (arr[i / length][i % length] == i)s++;
 	}
+	if (s == 15)
+	{
+		Escape = true;
+		 for (int i = 0; i < 1000; i++) cout << "Congratulations!";
+	}
+
 }
 
 void Output(int** arr, int& playerpointx, int& playerpointy, bool& Escape)
