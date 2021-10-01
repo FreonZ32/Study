@@ -53,6 +53,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamicArraysHomeWork", "Dy
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamicMemory", "DynamicMemory\DynamicMemory.vcxproj", "{70EDBC02-581E-4D88-BAEE-EC0A2FE45280}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameWithNumbers", "GameWithNumbers\GameWithNumbers.vcxproj", "{86BB7F74-7727-4D6D-BB74-2FEE20E642AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -261,6 +263,14 @@ Global
 		{70EDBC02-581E-4D88-BAEE-EC0A2FE45280}.Release|x64.Build.0 = Release|x64
 		{70EDBC02-581E-4D88-BAEE-EC0A2FE45280}.Release|x86.ActiveCfg = Release|Win32
 		{70EDBC02-581E-4D88-BAEE-EC0A2FE45280}.Release|x86.Build.0 = Release|Win32
+		{86BB7F74-7727-4D6D-BB74-2FEE20E642AE}.Debug|x64.ActiveCfg = Debug|x64
+		{86BB7F74-7727-4D6D-BB74-2FEE20E642AE}.Debug|x64.Build.0 = Debug|x64
+		{86BB7F74-7727-4D6D-BB74-2FEE20E642AE}.Debug|x86.ActiveCfg = Debug|Win32
+		{86BB7F74-7727-4D6D-BB74-2FEE20E642AE}.Debug|x86.Build.0 = Debug|Win32
+		{86BB7F74-7727-4D6D-BB74-2FEE20E642AE}.Release|x64.ActiveCfg = Release|x64
+		{86BB7F74-7727-4D6D-BB74-2FEE20E642AE}.Release|x64.Build.0 = Release|x64
+		{86BB7F74-7727-4D6D-BB74-2FEE20E642AE}.Release|x86.ActiveCfg = Release|Win32
+		{86BB7F74-7727-4D6D-BB74-2FEE20E642AE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
