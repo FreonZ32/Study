@@ -13,10 +13,6 @@ void Clear(int** arr, int height);
 void Drawing(int**& arr);
 void Check(int** arr, bool& Escape);
 void Output(int** arr, int& playerpointx, int& playerpointy, bool& Escape);
-//void Up(int** arr, int& playerpointx, int& playerpointy);
-//void Down(int** arr, int& playerpointx, int& playerpointy);
-//void Left(int** arr, int& playerpointx, int& playerpointy);
-//void Right(int** arr, int& playerpointx, int& playerpointy);
 void Move(int** arr, int& playerpointx, int& playerpointy, int move);
 
 void main()
@@ -79,7 +75,6 @@ int** Creating(int height, int length, int& playerpointx, int& playerpointy)
 			case 3:Move(arr, playerpointx, playerpointy,3); break;
 		}
 	}
-	//cout << endl << iterat;
 	return arr;
 }
 void Clear(int** arr, int height)
@@ -118,10 +113,6 @@ void Output(int** arr, int& playerpointx, int& playerpointy, bool& Escape)
 {
 	switch (_getch())
 	{
-	/*case 'w': Up(arr, playerpointx, playerpointy); break;
-	case 's': Down(arr, playerpointx, playerpointy); break;
-	case 'a': Left(arr, playerpointx, playerpointy); break;
-	case 'd': Right(arr, playerpointx, playerpointy); break;*/
 	case 'w': Move(arr, playerpointx, playerpointy, 0); break;
 	case 's': Move(arr, playerpointx, playerpointy, 1); break;
 	case 'a': Move(arr, playerpointx, playerpointy, 2); break;
@@ -131,43 +122,6 @@ void Output(int** arr, int& playerpointx, int& playerpointy, bool& Escape)
 	default: Clear(arr, height), system("PAUSE"), system("CLS"), main();
 	}
 }
-
-//void Up(int** arr,int& playerpointx, int& playerpointy)
-//{
-//	if (playerpointx > 0)
-//	{
-//		arr[playerpointx][playerpointy] = arr[playerpointx - 1][playerpointy];
-//		arr[playerpointx - 1][playerpointy] = 0;
-//		playerpointx -= 1;
-//	} else cout << "\nERROR";
-//}
-//void Down(int** arr, int& playerpointx, int& playerpointy)
-//{
-//	if (playerpointx < ::height-1)
-//	{	
-//		arr[playerpointx][playerpointy] = arr[playerpointx + 1][playerpointy];
-//		arr[playerpointx + 1][playerpointy] = 0;
-//		playerpointx += 1;
-//	} else cout << "\nERROR";
-//}
-//void Left(int** arr, int& playerpointx, int& playerpointy)
-//{
-//	if (playerpointy > 0)
-//	{
-//		arr[playerpointx][playerpointy] = arr[playerpointx][playerpointy-1];
-//		arr[playerpointx][playerpointy-1] = 0;
-//		playerpointy -= 1;
-//	} else cout << "\nERROR";
-//}
-//void Right(int** arr, int& playerpointx, int& playerpointy)
-//{
-//	if (playerpointy < ::length-1)
-//	{
-//		arr[playerpointx][playerpointy] = arr[playerpointx][playerpointy + 1];
-//		arr[playerpointx][playerpointy + 1] = 0;
-//		playerpointy += 1;
-//	} else cout << "\nERROR";
-//}
 
 void Move(int** arr, int& playerpointx, int& playerpointy, int move)
 {
