@@ -68,7 +68,7 @@ int** Creating(int height, int length, int& playerpointx, int& playerpointy)
 	for (int i = 0; i < height*length; i++)arr[i / length][i % length] = i;
 	playerpointx = 0;
 	playerpointy = 0;
-	int iterat = rand() % ((1000 - 20) + 20);
+	int iterat = 100 + rand() % 1000;
 	for (int i = 0; i < iterat; i++)
 	{
 		switch (rand() % 4)
