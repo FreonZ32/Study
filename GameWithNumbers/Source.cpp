@@ -24,6 +24,8 @@ void main()
 	//setlocale(LC_ALL, "rus");
 	int playerpointx, playerpointy;
 	int** arr = Creating(height, length, playerpointx, playerpointy);
+	system("PAUSE");
+	system("CLS");
 	bool Escape = false;
 	do
 	{
@@ -39,7 +41,7 @@ void main()
 
 int** Creating(int height, int length, int& playerpointx, int& playerpointy)
 {
-	bool playerpointlock = false;
+	/*bool playerpointlock = false;
 	int** arr = new int* [height];
 	for (int i = 0; i < height; i++)arr[i] = new int [length] {};
 	for (int i = 0; i < height * length; i++)
@@ -57,6 +59,26 @@ int** Creating(int height, int length, int& playerpointx, int& playerpointy)
 			{ arr[i / length][i % length] = 0; i--; }
 		}
 	}
+	return arr;*/
+
+	bool playerpointlock = false;
+	int** arr = new int* [height];
+	for (int i = 0; i < height; i++)arr[i] = new int [length] {};
+	for (int i = 0; i < height*length; i++)arr[i / length][i % length] = i;
+	playerpointx = 0;
+	playerpointy = 0;
+	int iterat = rand() % ((1000 - 20) + 20);
+	for (int i = 0; i < iterat; i++)
+	{
+		switch (rand() % 4)
+		{
+			case 0:Up(arr, playerpointx, playerpointy); break;
+			case 1:Down(arr, playerpointx, playerpointy); break;
+			case 2:Right(arr, playerpointx, playerpointy); break;
+			case 3:Left(arr, playerpointx, playerpointy); break;
+		}
+	}
+	cout << endl << iterat;
 	return arr;
 }
 void Clear(int** arr, int height)
@@ -89,7 +111,6 @@ void Check(int** arr, bool& Escape)
 		Escape = true;
 		 for (int i = 0; i < 1000; i++) cout << "Congratulations!";
 	}
-
 }
 
 void Output(int** arr, int& playerpointx, int& playerpointy, bool& Escape)
