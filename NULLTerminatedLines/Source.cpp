@@ -10,6 +10,7 @@ int SringLength(char str[]);
 void to_upper(char* str, int a = ((int)'а'), int z = ((int)'€'), int l = -32);
 void to_lower(char* str);
 void shrink(char* str);
+void is_palindrome(char* str);
 
 
 void main()
@@ -17,8 +18,8 @@ void main()
 	setlocale(LC_ALL, "rus");
 	//char str[] = { 'H', 'e','l', 'l', 'o', 0};
 	//char str[] = "Hello";
-	const int n = 20;
-	char str[20]{};
+	const int n = 50;
+	char str[50]{};
 	cout << " ¬ведите строку: "; 
 	//cin >> str;	//ввод строки (каждый пробел - разделение)
 	SetConsoleCP(1251);
@@ -31,6 +32,8 @@ void main()
 	cout << str << endl;
 	shrink(str);
 	cout << str << endl;
+	is_palindrome(str);
+
 	//cout << SringLength(str);
 
 	//ASCII();
@@ -66,5 +69,26 @@ void to_lower(char* str)
 
 void shrink(char* str)
 {
-	
+	for (int i = 0, k = 0; str[i]; i++)
+	{
+		if (str[i] == ' ' && str[i + 1] == ' ' && str[i + 1] != 0)
+		{
+			for (int j = 0; str[j]; j++)str[i+j] = str[i+j+1];
+			i--;
+		}
+	}
+}
+
+void is_palindrome(char* str)
+{
+	int l = 0;
+	bool palindrom = true;
+	for (; str[l]; l++);
+	l--;
+	for (int i = 0;l>i; i++, l--)
+	{
+		if (str[i] != str[l])palindrom = false;
+	}
+	if (!palindrom)cout << "Ёто не палиндром!";
+	else cout << "Ёто палиндром!";
 }
