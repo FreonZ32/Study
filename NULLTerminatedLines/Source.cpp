@@ -16,6 +16,10 @@ void is_int_numer(char* str, char* cout_n, char f, char s, unsigned short& t_o_n
 void is_bin_numer(char* str, char* cout_b, char f, char s, unsigned short& t_o_n, unsigned short n = 1);
 void is_hex_numer(char* str, char* cout_h, char f, char s, unsigned short& t_o_n, unsigned short n = 3);
 
+unsigned long long int to_int_number(char* str, unsigned short t_o_n);
+unsigned long long int bin_to_dec(char* str, unsigned short& t_o_n);
+unsigned int hex_to_dec(char* str, unsigned short& t_o_n);
+
 
 char cout_n[] = "Это десятичное ";
 char cout_b[] = "Это двоичное ";
@@ -31,6 +35,9 @@ void main()
 	const int n = 50;
 	char str[50]{};
 	unsigned short type_of_number = 0;
+	unsigned long long int number = 0;
+
+	//ASCII();
 
 	cout << " Введите строку(на русском языке): "; cin.getline(str, n);	//ввод строк с пробелами
 
@@ -46,11 +53,14 @@ void main()
 	is_int_numer(str, cout_n, '1',' b', type_of_number);
 	is_bin_numer(str, cout_b, '0', 'b', type_of_number);
 	is_hex_numer(str, cout_h, '0', 'x', type_of_number);
-	cout << type_of_number;
+	//cout << type_of_number;
+	cout << to_int_number(str, type_of_number) << endl;
+	cout << bin_to_dec(str, type_of_number);
+	cout <<endl<< number;
 
 	//cout << SringLength(str);
 
-	//ASCII();
+	
 }
 
 void ASCII()
@@ -116,10 +126,7 @@ void is_int_numer(char* str,char* cout_n, char f, char s, unsigned short& t_o_n,
 		cout << cout_n;
 		int i = 2;
 			while (str[i])
-			{
-				if (str[i] == '.' || str[i] == '/'|| str[i]==',')integ = true;
-				i++;
-			}
+			{ if (str[i] == '.' || str[i] == '/'|| str[i]==',')integ = true;i++; }
 			if (integ) cout << "дробное число!";
 			else cout << "целое число!";
 	}
@@ -131,4 +138,36 @@ void is_bin_numer(char* str,char* cout_b, char f, char s, unsigned short& t_o_n,
 void is_hex_numer(char* str, char* cout_h, char f, char s, unsigned short& t_o_n, unsigned short n)
 {
 	is_int_numer(str, cout_h, f, s, t_o_n, n);
+}
+
+unsigned long long int to_int_number(char* str, unsigned short t_o_n)
+{
+	unsigned long long int numb = 0;
+	if (t_o_n == 2)
+	{
+		for (int i = 2; str[i]; i++)
+		{
+			if (str[i] == 48)numb *= 10;
+			else { numb += (((unsigned int)str[i]) - 48);numb *= 10; }
+		}
+		numb /= 10; return numb;
+	}
+	else return 0;
+}
+unsigned long long int bin_to_dec(char* str, unsigned short& t_o_n)
+{
+	unsigned long long int numb, dec = 0, k = 1;
+	if (t_o_n == 1)
+	{
+		numb = to_int_number(str, (t_o_n + 1));
+		for (; numb ;numb/=10)
+		{ dec += ((numb % 10) * k); k *= 2; }
+		return dec;
+	}
+	else return 0;
+}
+
+unsigned int hex_to_dec(char* str, unsigned short& t_o_n)
+{
+
 }
