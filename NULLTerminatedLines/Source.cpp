@@ -20,18 +20,15 @@ unsigned long long int to_int_number(char* str, unsigned short t_o_n);
 unsigned long long int bin_to_dec(char* str, unsigned short& t_o_n);
 unsigned int hex_to_dec(char* str, unsigned short& t_o_n);
 
-
 char cout_n[] = "Ёто дес€тичное ";
 char cout_b[] = "Ёто двоичное ";
 char cout_h[] = "Ёто шестнадцетеричное ";
-
 
 void main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	setlocale(LC_ALL, "rus");
-
 	const int n = 50;
 	char str[50]{};
 	unsigned short type_of_number = 0;
@@ -50,17 +47,18 @@ void main()
 	cout << "ѕровер€ет, €вл€етс€ ли строка палиндромом: \t";  is_palindrome(str);
 
 	cout << " \n¬ведите строку с числом )0b(двоичное),1b(дес€тичное),0x(шестнадцатерична€): "; cin.getline(str, n);
-	is_int_numer(str, cout_n, '1',' b', type_of_number);
-	is_bin_numer(str, cout_b, '0', 'b', type_of_number);
-	is_hex_numer(str, cout_h, '0', 'x', type_of_number);
+	is_int_numer(str, cout_n, '1','b', type_of_number);
+	is_bin_numer(str, cout_b, '0','b', type_of_number);
+	is_hex_numer(str, cout_h, '0','x', type_of_number);
+
 	//cout << type_of_number;
-	cout << to_int_number(str, type_of_number) << endl;
-	cout << bin_to_dec(str, type_of_number);
-	cout <<endl<< number;
 
-	//cout << SringLength(str);
-
-	
+	number = to_int_number(str, type_of_number);
+	if(number!=0)cout << endl << number;
+	number = bin_to_dec(str, type_of_number);
+	if (number != 0)cout << endl << number;
+	number = hex_to_dec(str, type_of_number);
+	if (number != 0)cout << endl << number;
 }
 
 void ASCII()
@@ -70,6 +68,7 @@ void ASCII()
 		cout << i << "\t" << (char)i << endl;
 	}
 }
+
 int SringLength(char str[])
 {
 	int n = 0;
@@ -84,12 +83,10 @@ void to_upper(char* str, int a, int z, int l)
 		if (((int)str[i] >= a) && (int)str[i] <= z) str[i] = char((int)str[i] + l);
 	}
 }
-
 void to_lower(char* str)
 {
 	to_upper(str, ((int)'ј'), ((int)'я'), 32);
 }
-
 void shrink(char* str)
 {
 	for (int i = 0, k = 0; str[i]; i++)
@@ -101,7 +98,6 @@ void shrink(char* str)
 		}
 	}
 }
-
 void is_palindrome(char* str)
 {
 	int l = 0;
@@ -156,7 +152,8 @@ unsigned long long int to_int_number(char* str, unsigned short t_o_n)
 }
 unsigned long long int bin_to_dec(char* str, unsigned short& t_o_n)
 {
-	unsigned long long int numb, dec = 0, k = 1;
+	unsigned long long int numb;
+	int dec = 0, k = 1;
 	if (t_o_n == 1)
 	{
 		numb = to_int_number(str, (t_o_n + 1));
@@ -169,5 +166,18 @@ unsigned long long int bin_to_dec(char* str, unsigned short& t_o_n)
 
 unsigned int hex_to_dec(char* str, unsigned short& t_o_n)
 {
-
+	unsigned long long int dec = 0, k = 1, s = 0;
+	if (t_o_n == 3)
+	{
+		for (s; str[s]; s++);
+		for (--s; s >= 2; s--)
+		{
+			if ((int)str[s] >= 48 && (int)str[s] <= 57)
+			{ dec += ((((int)str[s]) - 48) * k); k *= 16;}
+			else
+			{ dec += ((((int)str[s]) - 55) * k); k *= 16;}
+		}
+		return dec;
+	}
+	return 0;
 }
