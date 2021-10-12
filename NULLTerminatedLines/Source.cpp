@@ -24,6 +24,9 @@ char cout_n[] = "Это десятичное ";
 char cout_b[] = "Это двоичное ";
 char cout_h[] = "Это шестнадцетеричное ";
 
+void is_mac_adress(char* str, unsigned short int& type_of_adress);
+void is_ip_adress(char* str, unsigned short int& type_of_adress);
+
 void main()
 {
 	SetConsoleCP(1251);
@@ -33,32 +36,47 @@ void main()
 	char str[50]{};
 	unsigned short type_of_number = 0;
 	unsigned long long int number = 0;
+	unsigned short int type_of_adress = 0;
 
 	//ASCII();
 
-	cout << " Введите строку(на русском языке): "; cin.getline(str, n);	//ввод строк с пробелами
+	//cout << " Введите строку(на русском языке): "; cin.getline(str, n);	//ввод строк с пробелами
 
-	cout << "Переводит строку в верхний регистр: \t"; to_upper(str);
-	cout << str << endl;
-	cout << "Переводит строку в нижний регистр: \t"; to_lower(str);
-	cout << str << endl;
-	cout << "Удаляет лишние пробелы из предложения: \t";  shrink(str);
-	cout << str << endl;
-	cout << "Проверяет, является ли строка палиндромом: \t";  is_palindrome(str);
+	//cout << "Переводит строку в верхний регистр: \t"; to_upper(str);
+	//cout << str << endl;
+	//cout << "Переводит строку в нижний регистр: \t"; to_lower(str);
+	//cout << str << endl;
+	//cout << "Удаляет лишние пробелы из предложения: \t";  shrink(str);
+	//cout << str << endl;
+	//cout << "Проверяет, является ли строка палиндромом: \t";  is_palindrome(str);
+	//cout << str << endl;
 
-	cout << " \nВведите строку с числом )0b(двоичное),1b(десятичное),0x(шестнадцатеричная): "; cin.getline(str, n);
-	is_int_numer(str, cout_n, '1','b', type_of_number);
-	is_bin_numer(str, cout_b, '0','b', type_of_number);
-	is_hex_numer(str, cout_h, '0','x', type_of_number);
+	//cout << " \nВведите строку с числом )0b(двоичное),1b(десятичное),0x(шестнадцатеричная): "; cin.getline(str, n);
+	//is_int_numer(str, cout_n, '1','b', type_of_number);
+	//is_bin_numer(str, cout_b, '0','b', type_of_number);
+	//is_hex_numer(str, cout_h, '0','x', type_of_number);
 
-	//cout << type_of_number;
+	////cout << type_of_number;
 
-	number = to_int_number(str, type_of_number);
-	if(number!=0)cout << endl << number;
-	number = bin_to_dec(str, type_of_number);
-	if (number != 0)cout << endl << number;
-	number = hex_to_dec(str, type_of_number);
-	if (number != 0)cout << endl << number;
+	//number = to_int_number(str, type_of_number);
+	//if(number!=0)cout << endl << number;
+	//number = bin_to_dec(str, type_of_number);
+	//if (number != 0)cout << endl << number;
+	//number = hex_to_dec(str, type_of_number);
+	//if (number != 0)cout << endl << number;
+
+	cout << "Введите свой адрес(без сокращений): "; cin >> str;
+	is_mac_adress(str,type_of_adress);
+	is_ip_adress(str, type_of_adress);
+	switch (type_of_adress)
+	{
+	case 1: cout << "Ето MAC aдресс!\n"; break;
+	case 2: cout << "Ето ip aдресс!\n"; break;
+	default:cout << "Не правильно введен адрес!";	
+	}
+	system("PAUSE");
+	system("cls");
+	main();
 }
 
 void ASCII()
@@ -180,4 +198,34 @@ unsigned int hex_to_dec(char* str, unsigned short& t_o_n)
 		return dec;
 	}
 	return 0;
+}
+
+void is_mac_adress(char* str, unsigned short int& type_of_adress)
+{
+	unsigned short int macSign = 0;
+	bool macAbc = true, macSize = false; 
+	unsigned short int sizeA = 0;
+	for (int i = 2; i <= 15; i += 3)if((int)str[i] == 58||(int)str[i] ==45)macSign++;	//if(5) = true;
+	for (; str[sizeA]; sizeA++)
+	{ if ((((int)str[sizeA] >= 48 && (int)str[sizeA] <= 57) || ((int)str[sizeA] >= 65 && (int)str[sizeA] <= 70)) || ((int)str[sizeA] == 58 || (int)str[sizeA] == 45));
+	else macAbc = false; }
+	if (macSign == 5 && macAbc && sizeA == 17)type_of_adress = 1;
+}
+void is_ip_adress(char* str, unsigned short int& type_of_adress)
+{
+	unsigned short int ipSign = 0;
+	unsigned short int sizeA = 0;
+	for (int i = 0; str[i]; i++)if(str[i] == 46)ipSign++;	//if(3) = true;
+	char buffer[4]{};
+	for (int i = 0;str[i]; i++)
+	{
+		int k = 0;
+		for (int j = i;((int)str[j]!=46&&str[j]!=0);j++,k++)
+		{
+			buffer[k] = str[j];
+		}
+		cout << buffer;
+		i += k;
+		system("PAUSE");
+	}
 }
