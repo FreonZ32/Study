@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 #include<Windows.h>
 using namespace std;
 using::cin;
@@ -7,7 +7,7 @@ using::endl;
 
 void ASCII();
 int SringLength(char str[]);
-void to_upper(char* str, int a = ((int)'а'), int z = ((int)'я'), int l = -32);
+void to_upper(char* str, int a = ((int)'Р°'), int z = ((int)'СЏ'), int l = -32);
 void to_lower(char* str);
 void shrink(char* str);
 void is_palindrome(char* str);
@@ -20,9 +20,9 @@ unsigned long long int to_int_number(char* str, unsigned short t_o_n);
 unsigned long long int bin_to_dec(char* str, unsigned short& t_o_n);
 unsigned int hex_to_dec(char* str, unsigned short& t_o_n);
 
-char cout_n[] = "Это десятичное ";
-char cout_b[] = "Это двоичное ";
-char cout_h[] = "Это шестнадцетеричное ";
+char cout_n[] = "Р­С‚Рѕ РґРµСЃСЏС‚РёС‡РЅРѕРµ ";
+char cout_b[] = "Р­С‚Рѕ РґРІРѕРёС‡РЅРѕРµ ";
+char cout_h[] = "Р­С‚Рѕ С€РµСЃС‚РЅР°РґС†РµС‚РµСЂРёС‡РЅРѕРµ ";
 
 void main()
 {
@@ -36,17 +36,17 @@ void main()
 
 	//ASCII();
 
-	cout << " Введите строку(на русском языке): "; cin.getline(str, n);	//ввод строк с пробелами
+	cout << " Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ(РЅР° СЂСѓСЃСЃРєРѕРј СЏР·С‹РєРµ): "; cin.getline(str, n);	//РІРІРѕРґ СЃС‚СЂРѕРє СЃ РїСЂРѕР±РµР»Р°РјРё
 
-	cout << "Переводит строку в верхний регистр: \t"; to_upper(str);
+	cout << "РџРµСЂРµРІРѕРґРёС‚ СЃС‚СЂРѕРєСѓ РІ РІРµСЂС…РЅРёР№ СЂРµРіРёСЃС‚СЂ: \t"; to_upper(str);
 	cout << str << endl;
-	cout << "Переводит строку в нижний регистр: \t"; to_lower(str);
+	cout << "РџРµСЂРµРІРѕРґРёС‚ СЃС‚СЂРѕРєСѓ РІ РЅРёР¶РЅРёР№ СЂРµРіРёСЃС‚СЂ: \t"; to_lower(str);
 	cout << str << endl;
-	cout << "Удаляет лишние пробелы из предложения: \t";  shrink(str);
+	cout << "РЈРґР°Р»СЏРµС‚ Р»РёС€РЅРёРµ РїСЂРѕР±РµР»С‹ РёР· РїСЂРµРґР»РѕР¶РµРЅРёСЏ: \t";  shrink(str);
 	cout << str << endl;
-	cout << "Проверяет, является ли строка палиндромом: \t";  is_palindrome(str);
+	cout << "РџСЂРѕРІРµСЂСЏРµС‚, СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЃС‚СЂРѕРєР° РїР°Р»РёРЅРґСЂРѕРјРѕРј: \t";  is_palindrome(str);
 
-	cout << " \nВведите строку с числом )0b(двоичное),1b(десятичное),0x(шестнадцатеричная): "; cin.getline(str, n);
+	cout << " \nР’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ СЃ С‡РёСЃР»РѕРј )0b(РґРІРѕРёС‡РЅРѕРµ),1b(РґРµСЃСЏС‚РёС‡РЅРѕРµ),0x(С€РµСЃС‚РЅР°РґС†Р°С‚РµСЂРёС‡РЅР°СЏ): "; cin.getline(str, n);
 	is_int_numer(str, cout_n, '1','b', type_of_number);
 	is_bin_numer(str, cout_b, '0','b', type_of_number);
 	is_hex_numer(str, cout_h, '0','x', type_of_number);
@@ -85,7 +85,7 @@ void to_upper(char* str, int a, int z, int l)
 }
 void to_lower(char* str)
 {
-	to_upper(str, ((int)'А'), ((int)'Я'), 32);
+	to_upper(str, ((int)'Рђ'), ((int)'РЇ'), 32);
 }
 void shrink(char* str)
 {
@@ -108,8 +108,8 @@ void is_palindrome(char* str)
 	{
 		if (str[i] != str[l])palindrom = false;
 	}
-	if (!palindrom)cout << "Это не палиндром!";
-	else cout << "Это палиндром!";
+	if (!palindrom)cout << "Р­С‚Рѕ РЅРµ РїР°Р»РёРЅРґСЂРѕРј!";
+	else cout << "Р­С‚Рѕ РїР°Р»РёРЅРґСЂРѕРј!";
 }
 
 void is_int_numer(char* str,char* cout_n, char f, char s, unsigned short& t_o_n, unsigned short n)
@@ -123,8 +123,8 @@ void is_int_numer(char* str,char* cout_n, char f, char s, unsigned short& t_o_n,
 		int i = 2;
 			while (str[i])
 			{ if (str[i] == '.' || str[i] == '/'|| str[i]==',')integ = true;i++; }
-			if (integ) cout << "дробное число!";
-			else cout << "целое число!";
+			if (integ) cout << "РґСЂРѕР±РЅРѕРµ С‡РёСЃР»Рѕ!";
+			else cout << "С†РµР»РѕРµ С‡РёСЃР»Рѕ!";
 	}
 }
 void is_bin_numer(char* str,char* cout_b, char f, char s, unsigned short& t_o_n, unsigned short n)
@@ -173,9 +173,9 @@ unsigned int hex_to_dec(char* str, unsigned short& t_o_n)
 		for (--s; s >= 2; s--)
 		{
 			if ((int)str[s] >= 48 && (int)str[s] <= 57)
-			{ dec += ((((int)str[s]) - 48) * k); k *= 16;}
+			{ dec += ((((unsigned int)str[s]) - 48) * k); k *= 16;}
 			else
-			{ dec += ((((int)str[s]) - 55) * k); k *= 16;}
+			{ dec += ((((unsigned int)str[s]) - 55) * k); k *= 16;}
 		}
 		return dec;
 	}
