@@ -1,5 +1,6 @@
 ﻿#include<iostream>
 #include<Windows.h>
+#include<stdlib.h>
 using namespace std;
 using::cin;
 using::cout;
@@ -215,17 +216,27 @@ void is_ip_adress(char* str, unsigned short int& type_of_adress)
 {
 	unsigned short int ipSign = 0;
 	unsigned short int sizeA = 0;
-	for (int i = 0; str[i]; i++)if(str[i] == 46)ipSign++;	//if(3) = true;
-	char buffer[4]{};
-	for (int i = 0;str[i]; i++)
+	bool trueNumbers = true;
+	for (; str[sizeA]; sizeA++)if(str[sizeA] == 46)ipSign++;	//if(3) = true;
+	//перед проверкой чисел, проверяем не выходит ли за пределы наша строка ip по точкам и знакам
+	if ((ipSign == 3 && (sizeA >= 7 && sizeA <= 15)))
 	{
-		int k = 0;
-		for (int j = i;((int)str[j]!=46&&str[j]!=0);j++,k++)
+		for (int i = 0; str[i]; i++)
 		{
-			buffer[k] = str[j];
+			if (trueNumbers)
+			{
+				char buffer[9]{};
+				int k = 0, num = 0;
+				for (int j = i; ((int)str[j] != 46 && str[j] != 0); j++, k++)buffer[k] = str[j];
+				//Проверка в массиве buffer числа на отсутствие иных знаков, затем перевод его в число int.
+				for (int i = 0; buffer[i]; i++) { if ((int)buffer[i] >= 48 && (int)buffer[i] <= 57)num = atoi(buffer); else trueNumbers = false; }
+				//Проверка диапазона числа int (от 0 до 255)
+				if (num >= 0 && num <= 255); else trueNumbers = false;
+				//cout << buffer << " " << num;system("PAUSE");
+				i += k;
+			}
 		}
-		cout << buffer;
-		i += k;
-		system("PAUSE");
 	}
+	else trueNumbers = false;
+	if ((ipSign == 3 && (sizeA >= 7 && sizeA <= 15)) && trueNumbers)type_of_adress = 2;
 }
