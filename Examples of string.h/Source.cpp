@@ -19,10 +19,12 @@ void s_strcoll(char* str, char* str1);
 void s_strncmp(char* str, char* str1, int num);
 void s_strxfrm(char* str1, char* str, int num);		//Странные ошибкb?????????????? когда не закоммичен setlocale
 
+void s_memchr(char* str, int value, int num);	//Посмотреть сайт, пункт Portability
+
 
 void main()
 {
-	//setlocale(LC_ALL, "rus");
+	setlocale(LC_ALL, "rus");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
@@ -45,6 +47,7 @@ void main()
 	//s_strcoll(str, str1);
 	//s_strncmp(str, str1, 3);
 	//s_strxfrm(str1, str, 2);
+	s_memchr(str, 'l', 4);
 }
 
 void s_memcpy(char* str_copy, char* str, int num)
@@ -130,4 +133,13 @@ void s_strxfrm(char* str1, char* str, int num)
 	l = strxfrm(0, str, 0);
 	cout << str << " - " << str1 << endl;
 	cout <<" Длинна первой строки: "<< l << endl;
+}
+
+void s_memchr(char* str, int value, int num)
+{	//Ищет в первых num блоках строки str первое совпадение с value и возвращает УКАЗАТЕЛЬ на него. В том случае если значение не найдено, возвращает null;
+	//Чтобы показать номер пункта, где было найдено значение можно воспользоваться выражением (указатель-строка+1);
+	char* l;
+	l =	(char*)memchr(str, value, num);
+	if (l != 0)cout << "Значение найдено на позиции: " << l-str+1 << endl;
+	else cout << "Похожих значений не найдено." << endl;
 }
