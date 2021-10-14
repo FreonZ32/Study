@@ -20,6 +20,7 @@ void s_strncmp(char* str, char* str1, int num);
 void s_strxfrm(char* str1, char* str, int num);		//Странные ошибкb?????????????? когда не закоммичен setlocale
 
 void s_memchr(char* str, int value, int num);	//Посмотреть сайт, пункт Portability
+void s_strchr(char* str, int value);
 
 
 void main()
@@ -47,7 +48,8 @@ void main()
 	//s_strcoll(str, str1);
 	//s_strncmp(str, str1, 3);
 	//s_strxfrm(str1, str, 2);
-	s_memchr(str, 'l', 4);
+	//s_memchr(str, 'l', 4);
+	s_strchr(str, 'l');
 }
 
 void s_memcpy(char* str_copy, char* str, int num)
@@ -142,4 +144,17 @@ void s_memchr(char* str, int value, int num)
 	l =	(char*)memchr(str, value, num);
 	if (l != 0)cout << "Значение найдено на позиции: " << l-str+1 << endl;
 	else cout << "Похожих значений не найдено." << endl;
+}
+void s_strchr(char* str, int value)
+{	//Возвращает указатель первого найденного значения, похожего на value из строки str.
+	char* l;
+	l = strchr(str, value);
+	if (l != 0) cout << "Значение найдено на позиции: " << l - str + 1 << endl;
+	else cout << "Значение не найдено." << endl;
+	//Интересная модель множественного поиска.
+	/*while (l != NULL)
+	{
+		printf("found at %d\n", l - str + 1);
+		l = strchr(l + 1, value);
+	}*/
 }
