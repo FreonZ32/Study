@@ -3,6 +3,8 @@
 #include<string.h>
 using namespace std;
 
+//http://cplusplus.com/reference/cstring/strcspn/
+
 #pragma warning(disable : 4996)		//для s_strcopy 
 
 void s_memcpy(char* str_copy, char* str, int num);
@@ -21,6 +23,8 @@ void s_strxfrm(char* str1, char* str, int num);		//Странные ошибкb??????????????
 
 void s_memchr(char* str, int value, int num);	//Посмотреть сайт, пункт Portability
 void s_strchr(char* str, int value);
+void s_strcspn(char* str, char* str1);
+
 
 
 void main()
@@ -49,7 +53,8 @@ void main()
 	//s_strncmp(str, str1, 3);
 	//s_strxfrm(str1, str, 2);
 	//s_memchr(str, 'l', 4);
-	s_strchr(str, 'l');
+	//s_strchr(str, 'l');
+	//s_strcspn(str1, str);
 }
 
 void s_memcpy(char* str_copy, char* str, int num)
@@ -158,3 +163,11 @@ void s_strchr(char* str, int value)
 		l = strchr(l + 1, value);
 	}*/
 }
+void s_strcspn(char* str, char* str1)
+{	//Проверяет str1 на вхождение любого символа из str, возвращая кол-во символов, прочитанных до первого вхождения.
+	//Если совпадений не будет найдено, то функция вернет длинну str1.
+	int l;
+	l = strcspn(str, str1);
+	cout << "Символы из " << str1 << " найдены на " << l+1 << " позиции в " << str << endl;
+}
+
