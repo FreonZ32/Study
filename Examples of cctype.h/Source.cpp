@@ -27,7 +27,7 @@ void main()
 	//c_isalpha(str);
 	//c_isblank(str);
 	//c_iscntrl(str);
-	c_isdigit(str);
+	//c_isdigit(str);
 
 }
 
